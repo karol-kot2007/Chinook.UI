@@ -1,11 +1,12 @@
-CREATE VIEW AlbumTracks1 AS 
+--DROP VIEW AlbumTracks
+CREATE VIEW AlbumTracks AS 
 SELECT 
-  artists.name, 
-  albums.Title, 
-  artists.ArtistId, 
-  albums.AlbumId, 
-  tracks.TrackId, 
-  tracks.name 
+  artists.name as ArtistName, 
+  albums.Title as AlbumName, 
+  artists.ArtistId as ArtistId , 
+  albums.AlbumId as AlbumId, 
+  tracks.TrackId as TrackId, 
+  tracks.name as TrackName
 FROM 
   artists 
   JOIN albums on artists.ArtistId = albums.ArtistId 
