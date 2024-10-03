@@ -1,5 +1,5 @@
---DROP VIEW AlbumRanksByCustomeaar
-CREATE VIEW AlbumRanksByCustomeaar as 
+--DROP VIEW AlbumRanksByCustomer
+CREATE VIEW AlbumRanksByCustomer as 
 SELECT 
   albums.AlbumId, 
   albumRank.CustomerId, 
