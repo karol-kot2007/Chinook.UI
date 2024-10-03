@@ -1,11 +1,7 @@
-CREATE TABLE "albumRank" 
-(
+CREATE TABLE "album_rank" (
 	"AlbumId"	INTEGER,
-	"AlbumName"	INTEGER,
 	"CustomerId"	INTEGER,
-	"CustomerName"	INTEGER,
 	"Rank"	INTEGER,
-	FOREIGN KEY("AlbumId") REFERENCES "albums" ([albumId]),
-	FOREIGN KEY("CustomerId") REFERENCES "customers"([customerId])
+	FOREIGN KEY("AlbumId") REFERENCES "albums"("AlbumId"),
+	FOREIGN KEY("CustomerId") REFERENCES "customers"("CustomerId")
 )
---FOREIGN KEY ([ArtistId]) REFERENCES "artists" ([ArtistId]) 
