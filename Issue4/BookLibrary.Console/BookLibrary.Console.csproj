@@ -9,10 +9,11 @@
 
   <ItemGroup>
     <PackageReference Include="FluentValidation" Version="11.10.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.1" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\BookLibrary.Models\BookLibrary.Models\BookLibrary.Models.csproj" />
+    <ProjectReference Include="..\BookLibrary.Models\BookLibrary.Models.csproj" />
   </ItemGroup>
 
 </Project>
