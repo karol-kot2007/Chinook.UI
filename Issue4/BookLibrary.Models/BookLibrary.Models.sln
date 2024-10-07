@@ -3,9 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35312.102
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookLibrary.Console", "BookLibrary.Console\BookLibrary.Console.csproj", "{500D87A8-EE02-465D-B418-2430CB8E8B8E}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookLibrary.Models", "..\BookLibrary.Models\BookLibrary.Models\BookLibrary.Models.csproj", "{C18009FE-B882-45D2-B75F-9D06A58ED3D6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookLibrary.Models", "BookLibrary.Models\BookLibrary.Models.csproj", "{C18009FE-B882-45D2-B75F-9D06A58ED3D6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,10 +11,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{500D87A8-EE02-465D-B418-2430CB8E8B8E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{500D87A8-EE02-465D-B418-2430CB8E8B8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{500D87A8-EE02-465D-B418-2430CB8E8B8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{500D87A8-EE02-465D-B418-2430CB8E8B8E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C18009FE-B882-45D2-B75F-9D06A58ED3D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C18009FE-B882-45D2-B75F-9D06A58ED3D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C18009FE-B882-45D2-B75F-9D06A58ED3D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -26,6 +20,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {7211F51B-8AF0-4755-B703-30F978C77C02}
+		SolutionGuid = {D164E3E8-3E59-4238-9976-DE9357CDF728}
 	EndGlobalSection
 EndGlobal
