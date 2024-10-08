@@ -1,24 +1,29 @@
 ﻿using Microsoft.EntityFrameworkCore;
-namespace Program
+
+namespace Chinook.ConsoleApp
 {
-  //public class AlbumTrack
-  //{
-  //  public int ArtistId { get; set; }
-  //  public string artistName { get; set; }
-  //  public int AlbumId { get; set; }
-  //  public int TrackId { get; set; }
-  //  public string AlbumName { get; set; }
-  //  public string TrackName { get; set; }
-  //}
+  public class AlbumTrack
+  {
+    public int ArtistId { get; set; }
+    public string artistName { get; set; }
+    public int AlbumId { get; set; }
+    public int TrackId { get; set; }
+    public string AlbumName { get; set; }
+    public string TrackName { get; set; }
+  }
 
   public class Track
   {
-    //public int ArtistId { get; set; }
-    //public string artistName { get; set; }
+    public int GenreId { get; set; }
+    public int MediaTypeId { get; set; }
     public int AlbumId { get; set; }
     public int TrackId { get; set; }
-    //public string AlbumName { get; set; }
-    //public string TrackName { get; set; }
+    public string Name { get; set; }
+    //public string Composer { get; set; }
+    public int Milliseconds { get; set; }
+    public int Bytes { get; set; }
+    public float UnitPrice { get; set; }
+
   }
 
   public class Artist
@@ -31,9 +36,9 @@ namespace Program
 
     //private static object chinook;
     // public DbSet<AlbumTrack> AlbumTracks1222 {  get; set; }  
-    public DbSet<Track> Tracks { get; set; }
+    public DbSet<Track> tracks { get; set; }
     public DbSet<Artist> Artists { get; set; }
-
+    public DbSet<AlbumTrack> AlbumTracks1222 { get; set; }
     public static string chinookPath = "chinook.db";
     public string DbPath { get; }
 
@@ -55,7 +60,7 @@ namespace Program
     {
       modelBuilder.Entity<Track>().HasKey(x => x.TrackId);
       modelBuilder.Entity<Artist>().HasKey(x => x.ArtistId);
-      // modelBuilder.Entity<AlbumTrack>().HasKey(x => x.AlbumId);
+      modelBuilder.Entity<AlbumTrack>().HasKey(x => x.AlbumId);
       //  modelBuilder.Entity<AlbumTrack>().HasKey(x => x.ArtistId);
     }
     //public void Main(string[] args)
@@ -71,20 +76,25 @@ namespace Program
     static void Main()
     {
       Console.WriteLine($"Database path: {chinookPath}.");
-      Console.WriteLine("Querying for a blog");
+    //  Console.WriteLine("Querying for a blog");
       var cont = new ArtistContext();
-     
-      foreach (var art in cont.Tracks)
+
+      foreach (var art in cont.tracks)
       {
+        //1. load all tracks for a given artist / album using the EF context entities(LINQ)
+        //Console.WriteLine(" genreID "+art.GenreId + " ,albumid " + art.AlbumId +  " ,tr id " + art.TrackId  +" ,bytes "+ art.Bytes + " ,price "+ art.UnitPrice + ",miliseconds "+art.Milliseconds+" ,Name is : "+art.Name);
        
-        // Console.WriteLine(art.artistName + " " + art.AlbumId + " " + art.ArtistId + " " + art.AlbumId + " " + art.TrackId + " track Name " + art.TrackName);
-      
+
       }
-      foreach(var tr in cont.Artists)
-      { 
-        Console.WriteLine(" track name "+tr.Name+" artist Id "+tr.ArtistId);
+      foreach(var art in cont.AlbumTracks1222)
+      { //2. load all tracks for a given artist/album using the EF and the view created in the issue2
+        //Console.WriteLine(" artist name is: "+art.artistName+ " albumName is: " + art.AlbumName+ " ArtistId is: " + art.ArtistId+ " albumId is: " + art.AlbumId+" trackId is: " + art.TrackId+ " trackName is: "  + art.TrackName);
       }
-      
+        //foreach (var tr in cont.Artists)
+      //{
+      // Console.WriteLine(" track name " + tr.Name + " artist Id " + tr.ArtistId);
+      //}
+
     }
   }
 
