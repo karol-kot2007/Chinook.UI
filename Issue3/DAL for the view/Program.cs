@@ -7,18 +7,27 @@ using System.Linq;
 using System.IO;
 namespace Program
 {
-  public class Artist
+  public class AlbumTrack
   {
     public int ArtistId { get; set; }
-    public string Name { get; set; }
+    public string artistName { get; set; }
+    public int AlbumId { get; set; }
+    public int TrackId { get; set; }
+    public string AlbumName { get; set; }
+    public string TrackName { get; set; }
   }
-
+  public class Artist
+  {
+    public string Name { get; set; }
+    public int ArtistId { get; set; }
+  }
   public class ArtistContext : DbContext
   {
 
     //private static object chinook;
-
-    public DbSet<Artist> Artists { get; set; }
+    // public DbSet<AlbumTrack> AlbumTracks1222 {  get; set; }  
+    public DbSet<AlbumTrack> AlbumTracks1222 { get; set; }
+    public DbSet<Artist> artists { get; set; }
 
     public static string chinookPath = "chinook.db";
     public string DbPath { get; }
@@ -39,7 +48,10 @@ namespace Program
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+      modelBuilder.Entity<AlbumTrack>().HasKey(x => x.ArtistId);
       modelBuilder.Entity<Artist>().HasKey(x => x.ArtistId);
+      // modelBuilder.Entity<AlbumTrack>().HasKey(x => x.AlbumId);
+      //  modelBuilder.Entity<AlbumTrack>().HasKey(x => x.ArtistId);
     }
     //public void Main(string[] args)
     //{
@@ -56,12 +68,19 @@ namespace Program
       Console.WriteLine($"Database path: {chinookPath}.");
       Console.WriteLine("Querying for a blog");
       var cont = new ArtistContext();
+      var albT = new ArtistContext();
 
-
-      foreach (var art in cont.Artists)
+      foreach (var art in cont.AlbumTracks1222)
       {
-        Console.WriteLine(art.Name + " ID " + art.ArtistId);
+       
+        // Console.WriteLine(art.artistName + " " + art.AlbumId + " " + art.ArtistId + " " + art.AlbumId + " " + art.TrackId + " track Name " + art.TrackName);
+      
       }
+      foreach(var tr in cont.artists)
+      { 
+        Console.WriteLine(" track name "+tr.Name+" artist Id "+tr.ArtistId);
+      }
+      
     }
   }
 
