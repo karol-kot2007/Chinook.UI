@@ -1,18 +1,16 @@
 ﻿
 
-namespace Chinook.DAL
+namespace Chinook.DAL.Models
 {
-    public class Class1
-    {
-    }
+   
   public class AlbumTrack
   {
-    public int ArtistId { get; set; }
+    public int artistId { get; set; }
     public string artistName { get; set; }
-    public int AlbumId { get; set; }
-    public int TrackId { get; set; }
-    public string AlbumName { get; set; }
-    public string TrackName { get; set; }
+    public int albumId { get; set; }
+    public int trackId { get; set; }
+    public string albumName { get; set; }
+    public string trackName { get; set; }
   }
   public class Track
   {
