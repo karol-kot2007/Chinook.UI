@@ -1,21 +1,26 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection.Metadata;
-using System.Linq;
-using System.IO;
 namespace Program
 {
-  public class AlbumTrack
+  //public class AlbumTrack
+  //{
+  //  public int ArtistId { get; set; }
+  //  public string artistName { get; set; }
+  //  public int AlbumId { get; set; }
+  //  public int TrackId { get; set; }
+  //  public string AlbumName { get; set; }
+  //  public string TrackName { get; set; }
+  //}
+
+  public class Track
   {
-    public int ArtistId { get; set; }
-    public string artistName { get; set; }
+    //public int ArtistId { get; set; }
+    //public string artistName { get; set; }
     public int AlbumId { get; set; }
     public int TrackId { get; set; }
-    public string AlbumName { get; set; }
-    public string TrackName { get; set; }
+    //public string AlbumName { get; set; }
+    //public string TrackName { get; set; }
   }
+
   public class Artist
   {
     public string Name { get; set; }
@@ -26,8 +31,8 @@ namespace Program
 
     //private static object chinook;
     // public DbSet<AlbumTrack> AlbumTracks1222 {  get; set; }  
-    public DbSet<AlbumTrack> AlbumTracks1222 { get; set; }
-    public DbSet<Artist> artists { get; set; }
+    public DbSet<Track> Tracks { get; set; }
+    public DbSet<Artist> Artists { get; set; }
 
     public static string chinookPath = "chinook.db";
     public string DbPath { get; }
@@ -48,7 +53,7 @@ namespace Program
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-      modelBuilder.Entity<AlbumTrack>().HasKey(x => x.ArtistId);
+      modelBuilder.Entity<Track>().HasKey(x => x.TrackId);
       modelBuilder.Entity<Artist>().HasKey(x => x.ArtistId);
       // modelBuilder.Entity<AlbumTrack>().HasKey(x => x.AlbumId);
       //  modelBuilder.Entity<AlbumTrack>().HasKey(x => x.ArtistId);
@@ -68,15 +73,14 @@ namespace Program
       Console.WriteLine($"Database path: {chinookPath}.");
       Console.WriteLine("Querying for a blog");
       var cont = new ArtistContext();
-      var albT = new ArtistContext();
-
-      foreach (var art in cont.AlbumTracks1222)
+     
+      foreach (var art in cont.Tracks)
       {
        
         // Console.WriteLine(art.artistName + " " + art.AlbumId + " " + art.ArtistId + " " + art.AlbumId + " " + art.TrackId + " track Name " + art.TrackName);
       
       }
-      foreach(var tr in cont.artists)
+      foreach(var tr in cont.Artists)
       { 
         Console.WriteLine(" track name "+tr.Name+" artist Id "+tr.ArtistId);
       }
