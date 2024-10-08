@@ -7,7 +7,7 @@ using System.Linq;
 using System.IO;
 namespace Program
 {
-  public class Artists
+  public class Artist
   {
     public int ArtistId { get; set; }
     public string Name { get; set; }
@@ -18,7 +18,7 @@ namespace Program
 
     //private static object chinook;
 
-    public DbSet<Artists> Artist { get; set; }
+    public DbSet<Artist> Artists { get; set; }
 
     public static string chinookPath = "chinook.db";
     public string DbPath { get; }
@@ -33,8 +33,13 @@ namespace Program
 
     protected override void OnConfiguring(DbContextOptionsBuilder options)
     {
-      
+
       options.UseSqlite($"Data Source={chinookPath}");
+    }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+      modelBuilder.Entity<Artist>().HasKey(x => x.ArtistId);
     }
     //public void Main(string[] args)
     //{
@@ -51,11 +56,11 @@ namespace Program
       Console.WriteLine($"Database path: {chinookPath}.");
       Console.WriteLine("Querying for a blog");
       var cont = new ArtistContext();
-      
-        
-      foreach (var  art in cont.Artist)
+
+
+      foreach (var art in cont.Artists)
       {
-        Console.WriteLine(art.Name);
+        Console.WriteLine(art.Name + " ID " + art.ArtistId);
       }
     }
   }
