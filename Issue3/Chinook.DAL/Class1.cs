@@ -21,7 +21,7 @@ namespace Chinook.DAL
     public int AlbumId { get; set; }
     public int TrackId { get; set; }
     public string Name { get; set; }
-    //public string Composer { get; set; }
+    public string Composer { get; set; }
     public int Milliseconds { get; set; }
     public int Bytes { get; set; }
     public float UnitPrice { get; set; }
