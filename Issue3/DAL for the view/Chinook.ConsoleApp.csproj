@@ -13,6 +13,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Chinook.DAL\Chinook.DAL.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Update="chinook.db">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
