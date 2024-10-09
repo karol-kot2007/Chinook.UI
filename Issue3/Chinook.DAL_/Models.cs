@@ -18,8 +18,8 @@ namespace Chinook.DAL.Models
     public int MediaTypeId { get; set; }
     public int AlbumId { get; set; }
     public int TrackId { get; set; }
-    public string? Name { get; set; }
-    public string? Composer { get; set; }
+    public string Name { get; set; }
+    public string Composer { get; set; }
     public int Milliseconds { get; set; }
     public int Bytes { get; set; }
     public float UnitPrice { get; set; }
@@ -27,7 +27,7 @@ namespace Chinook.DAL.Models
   }
   public class Artist
   {
-    public string? Name { get; set; }
+    public string Name { get; set; }
     public int ArtistId { get; set; }
   }
 
