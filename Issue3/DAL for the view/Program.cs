@@ -59,7 +59,7 @@ namespace Chinook.ConsoleApp
       }
       foreach(var art in cont.AlbumTracks)
       { //2. load all tracks for a given artist/album using the EF and the view created in the issue2
-        Console.WriteLine(" artist name is: "+art.artistName+ " albumName is: " );
+        Console.WriteLine(" artist name is: "+art.artistName+ " albumName is: " + art.albumName+" artist id " +art.artistId + "albumId"+art.albumId +"TrackId"+art.trackId +"trackN"+ art.trackName );
       }
 
       //load all tracks for a given artist / album using the EF and the view created in the issue2
