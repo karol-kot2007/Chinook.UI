@@ -31,4 +31,5 @@ namespace Chinook.DAL.Models
     public int ArtistId { get; set; }
   }
 
+   
 }
