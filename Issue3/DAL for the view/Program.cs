@@ -1,4 +1,5 @@
-﻿using Chinook.DAL;
+﻿//using Chinook.DAL;
+using Chinook.DAL;
 using Microsoft.EntityFrameworkCore;
 
 namespace Chinook.ConsoleApp

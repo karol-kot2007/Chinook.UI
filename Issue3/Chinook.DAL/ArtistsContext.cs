@@ -19,6 +19,7 @@ namespace Chinook.DAL
 
     protected override void OnConfiguring(DbContextOptionsBuilder options)
     {
+      //options.
       options.UseSqlite($"Data Source={chinookPath}");
     }
 

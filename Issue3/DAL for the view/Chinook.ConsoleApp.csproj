@@ -14,7 +14,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Chinook.DAL\Chinook.DAL.csproj" />
-    <ProjectReference Include="..\Chinook.DAL\Chinook.DAL_.csproj" />
   </ItemGroup>
 
   <ItemGroup>
