@@ -1,36 +1,33 @@
-﻿using System;
+﻿using Chinook.DAL.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace Chinook.UI
 {
   /// <summary>
-  /// Interaction logic for AlbumInfoControl.xaml
+  /// Interaction logic for AlbumInfoWindow.xaml
   /// </summary>
-  public partial class AlbumInfoControl : UserControl
+  public partial class AlbumInfoWindow : Window
   {
-    public AlbumInfoControl()
+    public AlbumInfoWindow()
     {
       InitializeComponent();
     }
 
-    public void Bind(Chinook.DAL.Models.AlbumTrack albumTracks)
+    internal void SetData(List<Artist> ar)
     {
-
+      DataContext = ar;
     }
   }
-  
-
 }

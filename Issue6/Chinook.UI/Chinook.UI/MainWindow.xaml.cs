@@ -17,20 +17,19 @@ namespace Chinook.UI
     public MainWindow()
     {
       InitializeComponent();
-      //Artist artist = new Artist();
-      //{
-      //  artist.Name = "Michael";
-      //  artist.ArtistId = 1;
-      //}
-      ArtistContext context = new ArtistContext();
-      var ar = context.GetArtists();
-      this.DataContext = ar;
-    }
+      Artist artist = new Artist();
+      {
+        //artist.NName = "Michael";
+        //artist.ArtistId = 1;
+      }
 
-    public void Button_Click(object sender, RoutedEventArgs e)
-    {
 
     }
+
+   
+     
+     // System.Collections.IList list = ar;
+    
     class Artist
     {
       public Artist()
@@ -39,6 +38,28 @@ namespace Chinook.UI
       }
       public string Name { get; set; }
       public int ArtistId { get; set; }
+    }
+
+    private void Button_View_Click(object sender, RoutedEventArgs e)
+    {
+
+      ArtistContext context = new ArtistContext();
+      var ar = context.GetArtists();
+      //System.Collections.IList list = ar;
+      //var r = context.AlbumTracks;
+
+      var model = new AlbumInfoModel();
+      model.ArtistName = ar.First().Name;
+      model.ArtistId = ar.First().ArtistId;
+      this.DataContext = model;
+      AlbumInfoWindow wnd = new AlbumInfoWindow();
+      wnd.SetData(ar);
+      wnd.ShowDialog();
+    }
+
+    private void Button_Edit_Click(object sender, RoutedEventArgs e)
+    {
+  
     }
   }
 

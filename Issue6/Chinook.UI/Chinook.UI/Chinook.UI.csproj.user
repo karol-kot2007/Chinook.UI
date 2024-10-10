@@ -10,9 +10,15 @@
     <Compile Update="AlbumInfoControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="AlbumInfoWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="AlbumInfoControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="AlbumInfoWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="MainWindow.xaml">

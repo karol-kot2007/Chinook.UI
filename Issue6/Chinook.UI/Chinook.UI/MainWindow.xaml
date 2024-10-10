@@ -6,34 +6,20 @@
         xmlns:local="clr-namespace:Chinook.UI"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-  <Border> <Grid>
-      
-  
-    <Label 
-           Background="GreenYellow"
-              
-           >
-        <Button Content="Press" Height="31" Width="68" RenderTransformOrigin="1.096,0.669" Click="Button_Click"
-                />
 
-      </Label>
-      <Label Content="Artist Name :"
-             Height="50"
-        Margin="100,00,0,0"
-        />
-      <Label Content="Artist Id :"
-        Height="50"
-   Margin="100,50,0,0"
-   />
-      <Label Content="{Binding ArtistId,Mode=OneWay}"
-                  Height="50"
-Margin="180,50,0,0"/>
+  <StackPanel Orientation="Vertical">
+    <StackPanel Orientation="Horizontal">
 
-      <Label Content="{Binding  Name,Mode=OneWay}"
-             Height="50"
-Margin="180,0,0,0"
-             />
-    </Grid>
-  </Border>
+      <Button Content="View Album" Margin="-4,0,0,0" Click="Button_View_Click"/>
+      <Button Content="Edit Album" Margin="-4,0,0,0" Click="Button_Edit_Click" />
+    </StackPanel>
+    
+    
+
+
+
+
+  </StackPanel>
+
 
 </Window>
