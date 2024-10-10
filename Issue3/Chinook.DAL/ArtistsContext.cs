@@ -17,6 +17,11 @@ namespace Chinook.DAL
       DbPath = chinookPath;
     }
 
+    public List<Artist> GetArtists()
+    {
+      return Artists.ToList();
+    }
+
     protected override void OnConfiguring(DbContextOptionsBuilder options)
     {
       //options.

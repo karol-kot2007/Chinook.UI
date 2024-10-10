@@ -7,9 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Chinook.UI", "Chinook.UI\Ch
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AlbumInfoControl", "AlbumInfoControl", "{2EB4F354-57B2-448D-BFCB-CE9F6997E8E4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chinook.DAL", "..\..\Issue3\Chinook.DAL\Chinook.DAL.csproj", "{1861BA1C-4020-4653-B904-7367F45CEBC4}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Chinook.ConsoleApp", "..\..\Issue3\DAL for the view\Chinook.ConsoleApp.csproj", "{3C7F0A77-89EC-44D3-A8AA-719D15D98ADF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Chinook.DAL", "..\..\Issue3\Chinook.DAL\Chinook.DAL.csproj", "{1861BA1C-4020-4653-B904-7367F45CEBC4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,10 +23,6 @@ Global
 		{1861BA1C-4020-4653-B904-7367F45CEBC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1861BA1C-4020-4653-B904-7367F45CEBC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1861BA1C-4020-4653-B904-7367F45CEBC4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3C7F0A77-89EC-44D3-A8AA-719D15D98ADF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3C7F0A77-89EC-44D3-A8AA-719D15D98ADF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3C7F0A77-89EC-44D3-A8AA-719D15D98ADF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3C7F0A77-89EC-44D3-A8AA-719D15D98ADF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

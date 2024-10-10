@@ -9,14 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="EntityFramework" Version="6.5.1" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.8" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Reference Include="Chinook.DAL">
-      <HintPath>..\..\..\Issue3\Chinook.DAL\bin\Debug\Chinook.DAL.dll</HintPath>
-    </Reference>
+    <ProjectReference Include="..\..\..\Issue3\Chinook.DAL\Chinook.DAL.csproj" />
   </ItemGroup>
 
 </Project>
