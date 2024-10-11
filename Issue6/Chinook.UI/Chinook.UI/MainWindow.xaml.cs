@@ -63,6 +63,7 @@ namespace Chinook.UI
       model.ArtistId = ar.First().ArtistId;
       var album = context.Albums.Where(a => a.ArtistId == model.ArtistId).First();
       model.Tracks = context.Tracks.Where(i => i.AlbumId == album.AlbumId).ToList();
+     // model.ArtistName = context.Artists.Where(A => A.name ==model.ArtistName).ToList();
       return model;
     }
 
