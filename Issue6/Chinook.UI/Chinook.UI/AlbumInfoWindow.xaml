@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="AlbumInfoWindow" Height="450" Width="800">
     <Grid>
-    <local:AlbumInfoControl HorizontalAlignment="Left" Margin="220,165,0,0" VerticalAlignment="Top"  />
-    <DataGrid ItemsSource="{Binding  NName,Mode=OneWay}"/>
+    <local:AlbumInfoControl HorizontalAlignment="Left" Margin="220,165,0,0" VerticalAlignment="Top" x:Name="AlbumInfoControl"  />
+   
   </Grid>
 </Window>

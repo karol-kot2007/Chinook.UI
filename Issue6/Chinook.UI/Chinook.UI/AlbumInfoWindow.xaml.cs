@@ -12,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using static Chinook.UI.MainWindow;
 
 namespace Chinook.UI
 {
@@ -25,9 +26,10 @@ namespace Chinook.UI
       InitializeComponent();
     }
 
-    internal void SetData(List<Artist> ar)
+    internal void SetData(AlbumInfoModel model)
     {
-      DataContext = ar;
+      DataContext = model;
+      AlbumInfoControl.Bind(model);
     }
   }
 }

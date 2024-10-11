@@ -4,7 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Windows.Controls;
+using System.Windows;
 namespace Chinook.UI
 {
   public class AlbumInfoModel
@@ -15,5 +16,6 @@ namespace Chinook.UI
     public string ArtistName { get; set; }
     public int ArtistId { get; set; }
     public List<Track> Tracks { get; set; }
+
   }
 }

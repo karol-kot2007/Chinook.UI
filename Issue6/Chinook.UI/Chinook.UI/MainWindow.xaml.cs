@@ -26,10 +26,10 @@ namespace Chinook.UI
 
     }
 
+
    
-     
-     // System.Collections.IList list = ar;
-    
+    // System.Collections.IList list = ar;
+
     class Artist
     {
       public Artist()
@@ -51,16 +51,18 @@ namespace Chinook.UI
       var model = new AlbumInfoModel();
       model.ArtistName = ar.First().Name;
       model.ArtistId = ar.First().ArtistId;
-      this.DataContext = model;
-      AlbumInfoWindow wnd = new AlbumInfoWindow();
-      wnd.SetData(ar);
+      //this.DataContext = model;
+      var wnd = new AlbumInfoWindow();
+      wnd.SetData(model);
       wnd.ShowDialog();
+      
     }
 
     private void Button_Edit_Click(object sender, RoutedEventArgs e)
     {
-  
+       
     }
+    
   }
 
 }
