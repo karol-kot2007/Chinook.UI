@@ -48,14 +48,22 @@ namespace Chinook.UI
       //System.Collections.IList list = ar;
       //var r = context.AlbumTracks;
 
-      var model = new AlbumInfoModel();
-      model.ArtistName = ar.First().Name;
-      model.ArtistId = ar.First().ArtistId;
+      AlbumInfoModel model = BuildModel(context, ar);
       //this.DataContext = model;
       var wnd = new AlbumInfoWindow();
       wnd.SetData(model);
       wnd.ShowDialog();
-      
+
+    }
+
+    private static AlbumInfoModel BuildModel(ArtistContext context, List<DAL.Models.Artist> ar)
+    {
+      var model = new AlbumInfoModel();
+      model.ArtistName = ar.First().Name;
+      model.ArtistId = ar.First().ArtistId;
+      var album = context.Albums.Where(a => a.ArtistId == model.ArtistId).First();
+      model.Tracks = context.Tracks.Where(i => i.AlbumId == album.AlbumId).ToList();
+      return model;
     }
 
     private void Button_Edit_Click(object sender, RoutedEventArgs e)

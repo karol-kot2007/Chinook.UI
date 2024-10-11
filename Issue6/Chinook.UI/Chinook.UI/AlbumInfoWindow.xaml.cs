@@ -28,6 +28,7 @@ namespace Chinook.UI
 
     internal void SetData(AlbumInfoModel model)
     {
+
       DataContext = model;
       AlbumInfoControl.Bind(model);
     }

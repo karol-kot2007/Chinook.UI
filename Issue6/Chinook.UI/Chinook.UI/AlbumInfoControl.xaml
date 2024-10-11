@@ -14,12 +14,18 @@
     </StackPanel>
 
     <StackPanel Orientation="Horizontal" Height="155" >
-      <!--<Label Content="Artist Id :"  Height="50" Margin="100,50,0,0"  />
-      <TextBox Text="{Binding ArtistId,Mode=OneWay}"  Height="50" Margin="180,50,0,0"/>-->
-      <DataGrid Name="GridAlbum" AutoGenerateColumns="True" Width="200" Margin="12,21,0,0">
+      <StackPanel Orientation="Horizontal">
+      <Label Content="Artist:"  Height="50" Margin="1,50,0,0"  />
+      <TextBox Text="{Binding ArtistName,Mode=OneWay}"  Height="50" Margin="10,50,0,0" />
+      </StackPanel>
+      <StackPanel Orientation="Horizontal">
+        <Label Content="Artist:"  Height="50" Margin="1,50,0,0"  />
+        <TextBox Text="{Binding Track,Mode=OneWay}"  Height="50" Margin="10,50,0,0" />
+      </StackPanel>
+      <DataGrid Name="GridAlbum" AutoGenerateColumns="True" Width="605" Margin="-60,21,0,0" Height="138">
         <DataGrid.Columns>
           <DataGridTextColumn Header="ArtistId"  Binding="{Binding ArtistId}"/>
-          <DataGridTextColumn Header="ArtistName" Binding="{Binding ArtistName}" />
+          <DataGridTextColumn Header="ArtistName" Binding="{Binding Name}" />
         </DataGrid.Columns>
       </DataGrid>
     </StackPanel>
