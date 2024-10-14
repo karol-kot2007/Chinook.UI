@@ -1,6 +1,7 @@
 ﻿using Chinook.DAL.Models;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -30,14 +31,19 @@ namespace Chinook.UI
       //
     }
 
-    public void Bind(Chinook.DAL.Models.AlbumTrack albumTracks)
-    {
+    //public void Bind(Chinook.DAL.Models.AlbumTrack albumTracks)
+    //{
 
-    }
+    //}
 
-    internal void Bind(AlbumInfoModel model)
+    internal void Bind(AlbumInfoModel model/*,Mode mode*/)
     {
+      
       GridAlbum.ItemsSource = model.Tracks;
+      Button button = new Button();
+   
+      button.Visibility = System.Windows.Visibility.Hidden; 
+      //
     }
 
     private void dgUsers_AddingNewItem(object sender, AddingNewItemEventArgs e)
@@ -49,6 +55,11 @@ namespace Chinook.UI
     private void Close_Button(object sender, RoutedEventArgs e)
     {
       System.Environment.Exit(0);
+    }
+
+    private void ok_Button(object sender, RoutedEventArgs e)
+    {
+
     }
   }
 

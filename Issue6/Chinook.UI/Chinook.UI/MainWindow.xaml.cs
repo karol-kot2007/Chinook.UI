@@ -12,12 +12,14 @@ using Chinook.DAL;
 using Chinook.DAL.Models;
 namespace Chinook.UI
 {
+ public enum Mode
+  {
+    View, Edit
+  }
   public partial class MainWindow : Window
   {
-    enum Mode
-    {
-      View, Edit
-    }
+    
+  
 
     public MainWindow()
     {
@@ -50,14 +52,12 @@ namespace Chinook.UI
 
       ArtistContext context = new ArtistContext();
       var ar = context.GetArtists();
-      //System.Collections.IList list = ar;
-      //var r = context.AlbumTracks;
-
       AlbumInfoModel model = BuildModel(context, ar);
-      //this.DataContext = model;
+   
       var wnd = new AlbumInfoWindow();
-      wnd.SetData(model);
-      wnd.ShowDialog();
+      wnd.DisplayMode=Mode.View;
+      wnd.ShowWithData(model);
+      
 
     }
 
@@ -70,8 +70,7 @@ namespace Chinook.UI
       model.Tracks = context.Tracks.Where(i => i.AlbumId == album.AlbumId).ToList();
       model.AlbumId = album.AlbumId;
       model.AlbumName = album.Title;
-   //   model.ArtistId = ar.First().ArtistId;
-   // model.ArtistName = context.Artists.Where(A => A.name ==model.ArtistName).ToList();
+ 
       Mode v=Mode.View;
       return model;
     }
@@ -80,16 +79,14 @@ namespace Chinook.UI
     {
       ArtistContext context = new ArtistContext();
       var ar = context.GetArtists();
-      //System.Collections.IList list = ar;
-      //var r = context.AlbumTracks;
-
-      AlbumInfoModel model = BuildModel(context, ar);
-      //this.DataContext = model;
-      var wnd = new AlbumInfoWindow();
-      wnd.SetData(model);
     
-      wnd.ShowDialog();
-      Mode v = Mode.Edit;
+      AlbumInfoModel model = BuildModel(context, ar);
+     
+      var wnd = new AlbumInfoWindow();
+      wnd.DisplayMode=Mode.Edit; 
+      wnd.ShowWithData(model);
+ 
+    
     }
     
   }

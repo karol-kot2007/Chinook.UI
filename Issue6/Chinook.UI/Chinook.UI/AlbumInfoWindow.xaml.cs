@@ -21,16 +21,23 @@ namespace Chinook.UI
   /// </summary>
   public partial class AlbumInfoWindow : Window
   {
+    public Mode DisplayMode { get; set; }
+
     public AlbumInfoWindow()
     {
       InitializeComponent();
+
+    }
+    protected override void OnInitialized(EventArgs e)
+    {
+      base.OnInitialized(e);
     }
 
-    internal void SetData(AlbumInfoModel model)
+    internal void ShowWithData(AlbumInfoModel model)
     {
-
       DataContext = model;
       AlbumInfoControl.Bind(model);
+      ShowDialog();
     }
   }
 }
