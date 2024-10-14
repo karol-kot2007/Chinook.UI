@@ -8,21 +8,25 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <StackPanel Orientation="Vertical" >
       <StackPanel Orientation="Horizontal">
-        <Label Content="Album:"    />
-        <TextBox Text="{Binding AlbumName,Mode=OneWay}"   IsReadOnly="True" />
+      <Label Content="Album:"/>
+      <TextBox Text="{Binding AlbumName,Mode=OneWay}"   IsReadOnly="True" />
       </StackPanel>
-      <StackPanel Orientation="Horizontal">
-        <Label Content="Artist:" />
-        <TextBox Text="{Binding ArtistName,Mode=OneWay}" IsReadOnly="True"/>
-      </StackPanel>
-      <DataGrid Name="GridAlbum" AutoGenerateColumns="False" Width="605" Margin="0,0,0,0" >
+    <StackPanel Orientation="Horizontal">
+      <Label Content="Artist:" />
+      <TextBox Text="{Binding ArtistName,Mode=OneWay}" IsReadOnly="True"/>
+    </StackPanel>
+    <DataGrid Name="GridAlbum" AutoGenerateColumns="False" Width="605" Margin="0,0,0,0" >
         <DataGrid.Columns>
 
         <DataGridTextColumn Header="Composer:" Binding="{Binding Composer}" IsReadOnly="True"  />
         <DataGridTextColumn Header="TrackName: " Binding="{Binding Name}" IsReadOnly="True"  />
         <DataGridTextColumn Header="Price: " Binding="{Binding UnitPrice}" IsReadOnly="True"  />
-      </DataGrid.Columns>
+      
+        </DataGrid.Columns>
       </DataGrid>
+    <StackPanel Orientation="Horizontal">
+      <Button Content="close" Click="Close_Button" Margin="750,200,0,0"  />
     </StackPanel>
+  </StackPanel>
 
 </UserControl>

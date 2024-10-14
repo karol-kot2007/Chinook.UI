@@ -45,6 +45,11 @@ namespace Chinook.UI
 
 
     }
+
+    private void Close_Button(object sender, RoutedEventArgs e)
+    {
+      System.Environment.Exit(0);
+    }
   }
 
 } 
