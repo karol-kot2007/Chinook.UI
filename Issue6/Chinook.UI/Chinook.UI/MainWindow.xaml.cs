@@ -56,14 +56,18 @@ namespace Chinook.UI
 
     }
 
-    private static AlbumInfoModel BuildModel(ArtistContext context, List<DAL.Models.Artist> ar)
+    private static AlbumInfoModel BuildModel(ArtistContext context, List<DAL.Models.Artist> artists)
     {
       var model = new AlbumInfoModel();
-      model.ArtistName = ar.First().Name;
-      model.ArtistId = ar.First().ArtistId;
+      model.ArtistName = artists.First().Name;
+      model.ArtistId = artists.First().ArtistId;
       var album = context.Albums.Where(a => a.ArtistId == model.ArtistId).First();
       model.Tracks = context.Tracks.Where(i => i.AlbumId == album.AlbumId).ToList();
-     // model.ArtistName = context.Artists.Where(A => A.name ==model.ArtistName).ToList();
+      model.AlbumId = album.AlbumId;
+      model.AlbumName = album.Title;
+   //   model.ArtistId = ar.First().ArtistId;
+   // model.ArtistName = context.Artists.Where(A => A.name ==model.ArtistName).ToList();
+
       return model;
     }
 

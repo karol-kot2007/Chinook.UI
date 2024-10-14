@@ -13,13 +13,5 @@
       <Button Content="View Album" Margin="-4,0,0,0" Click="Button_View_Click"/>
       <Button Content="Edit Album" Margin="-4,0,0,0" Click="Button_Edit_Click" />
     </StackPanel>
-    
-    
-
-
-
-
   </StackPanel>
-
-
 </Window>
