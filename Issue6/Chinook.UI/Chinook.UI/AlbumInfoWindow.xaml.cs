@@ -1,24 +1,8 @@
-﻿using Chinook.DAL.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using static Chinook.UI.MainWindow;
+﻿using System.Windows;
 
 namespace Chinook.UI
 {
-  /// <summary>
-  /// Interaction logic for AlbumInfoWindow.xaml
-  /// </summary>
+  
   public partial class AlbumInfoWindow : Window
   {
     public Mode DisplayMode { get; set; }
@@ -36,8 +20,29 @@ namespace Chinook.UI
     internal void ShowWithData(AlbumInfoModel model)
     {
       DataContext = model;
-      AlbumInfoControl.Bind(model);
+      AlbumInfoControl.Bind(model,DisplayMode);
+      //CancelBtn.Visibility = Visibility.Collapsed;
+    
+
       ShowDialog();
     }
+
+    private void CloseBtn_Click(object sender, RoutedEventArgs e)
+    {
+      //zrobic visibilty w zalesznosci od 
+      Close();
+    }
+    private void OkBtn_Click(object sender, RoutedEventArgs e)
+    {
+      //zrobic visibilty w zalesznosci od 
+
+    }
+    private void CancelBtn_Click(object sender, RoutedEventArgs e)
+    {
+      //zrobic visibilty w zalesznosci od 
+
+    }
+    //dodac  private void
+
   }
 }

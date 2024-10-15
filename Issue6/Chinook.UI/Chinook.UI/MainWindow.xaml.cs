@@ -1,18 +1,8 @@
-﻿using System.Text;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+﻿using System.Windows;
 using Chinook.DAL;
-using Chinook.DAL.Models;
 namespace Chinook.UI
 {
- public enum Mode
+  public enum Mode
   {
     View, Edit
   }
@@ -26,16 +16,14 @@ namespace Chinook.UI
       InitializeComponent();
       Artist artist = new Artist();
       {
-        //artist.NName = "Michael";
-        //artist.ArtistId = 1;
+        
       }
 
 
     }
 
 
-   
-    // System.Collections.IList list = ar;
+
 
     class Artist
     {

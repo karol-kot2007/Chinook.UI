@@ -24,10 +24,7 @@
       
         </DataGrid.Columns>
       </DataGrid>
-    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-      <Button Content="close" Click="Close_Button"  />
-      <Button Content="ok" Click="ok_Button"   />
-    </StackPanel>
+   
   </StackPanel>
 
 </UserControl>

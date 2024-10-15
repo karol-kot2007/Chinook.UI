@@ -6,8 +6,22 @@
         xmlns:local="clr-namespace:Chinook.UI"
         mc:Ignorable="d"
         Title="AlbumInfoWindow"  Width="800">
-    <Grid>
-    <local:AlbumInfoControl HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" x:Name="AlbumInfoControl"  />
-   
+  <Grid>
+    <StackPanel >
+      <local:AlbumInfoControl HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" x:Name="AlbumInfoControl"  />
+      <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" RenderTransformOrigin="0.5,0.5" Width="93">
+        <StackPanel.RenderTransform>
+          <TransformGroup>
+            <ScaleTransform/>
+            <SkewTransform/>
+            <RotateTransform Angle="-0.528"/>
+            <TranslateTransform/>
+          </TransformGroup>
+        </StackPanel.RenderTransform>
+        <Button Content="close" Name="CloseBtn" Click="CloseBtn_Click" Width="38"/>
+        <Button Content="ok" Name="OkBtn" Click="OkBtn_Click"/>
+        <Button Content="cancel" Name="CancelBtn" Click="CancelBtn_Click"/>
+      </StackPanel>
+    </StackPanel>
   </Grid>
 </Window>
