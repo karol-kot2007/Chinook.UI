@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using System.Windows.Controls;
 using Chinook.DAL;
 namespace Chinook.UI
 {
@@ -8,10 +9,10 @@ namespace Chinook.UI
   }
   public partial class MainWindow : Window
   {
-    
-  
+        public Button CancelBtn { get; set; }
 
-    public MainWindow()
+
+        public MainWindow()
     {
       InitializeComponent();
       Artist artist = new Artist();
@@ -46,7 +47,7 @@ namespace Chinook.UI
       wnd.DisplayMode=Mode.View;
       wnd.ShowWithData(model);
       
-
+      //CancelBtn.Visibility = Visibility.Collapsed;
     }
 
     private static AlbumInfoModel BuildModel(ArtistContext context, List<DAL.Models.Artist> artists)
@@ -73,7 +74,7 @@ namespace Chinook.UI
       var wnd = new AlbumInfoWindow();
       wnd.DisplayMode=Mode.Edit; 
       wnd.ShowWithData(model);
- 
+       
     
     }
     

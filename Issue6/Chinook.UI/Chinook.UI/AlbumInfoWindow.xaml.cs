@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using System.Windows;
 
 namespace Chinook.UI
 {
@@ -21,8 +22,12 @@ namespace Chinook.UI
     {
       DataContext = model;
       AlbumInfoControl.Bind(model,DisplayMode);
-      //CancelBtn.Visibility = Visibility.Collapsed;
-    
+      if(DisplayMode==Mode.View)
+      {
+        CancelBtn.Visibility = Visibility.Collapsed;
+      }
+
+
 
       ShowDialog();
     }
@@ -35,7 +40,7 @@ namespace Chinook.UI
     private void OkBtn_Click(object sender, RoutedEventArgs e)
     {
       //zrobic visibilty w zalesznosci od 
-
+      
     }
     private void CancelBtn_Click(object sender, RoutedEventArgs e)
     {
