@@ -7,24 +7,22 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
   <StackPanel Orientation="Vertical" >
+    <local:AlbumSwapper />
+    
     <StackPanel Orientation="Horizontal">
       <Label Content="Album:"/>
-      <TextBox Text="{Binding AlbumName}"    Name="AlbumName" IsReadOnly="False" />
+      <TextBox Text="{Binding AlbumName}"    Name="AlbumName" />
     </StackPanel>
     <StackPanel Orientation="Horizontal">
       <Label Content="Artist:" />
-      <TextBox Text="{Binding ArtistName}" Name="ArtistName" IsReadOnly="False"/>
+      <TextBox Text="{Binding ArtistName}" Name="ArtistName" />
     </StackPanel>
     <DataGrid Name="GridAlbum" AutoGenerateColumns="False" Width="605" Margin="0,0,0,0" >
       <DataGrid.Columns>
-
         <DataGridTextColumn Header="Composer:" Binding="{Binding Composer}"  x:Name="ComposerButton" IsReadOnly="True"   />
         <DataGridTextColumn Header="TrackName: " Binding="{Binding Name}"  x:Name="TrackNameButton"  IsReadOnly="True" />
         <DataGridTextColumn Header="Price: " Binding="{Binding UnitPrice}"  x:Name="PriceButton"  IsReadOnly="True" />
-
       </DataGrid.Columns>
     </DataGrid>
-
   </StackPanel>
-
 </UserControl>

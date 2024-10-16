@@ -9,22 +9,14 @@ namespace Chinook.UI
   }
   public partial class MainWindow : Window
   {
-        public Button CancelBtn { get; set; }
+    public Button CancelBtn { get; set; }
 
 
-        public MainWindow()
+    public MainWindow()
     {
       InitializeComponent();
-      Artist artist = new Artist();
-      {
-        
-      }
-
 
     }
-
-
-
 
     class Artist
     {
@@ -42,11 +34,11 @@ namespace Chinook.UI
       ArtistContext context = new ArtistContext();
       var ar = context.GetArtists();
       AlbumInfoModel model = BuildModel(context, ar);
-   
+
       var wnd = new AlbumInfoWindow();
-      wnd.DisplayMode=Mode.View;
+      wnd.DisplayMode = Mode.View;
       wnd.ShowWithData(model);
-      
+
       //CancelBtn.Visibility = Visibility.Collapsed;
     }
 
@@ -59,8 +51,6 @@ namespace Chinook.UI
       model.Tracks = context.Tracks.Where(i => i.AlbumId == album.AlbumId).ToList();
       model.AlbumId = album.AlbumId;
       model.AlbumName = album.Title;
- 
-      Mode v=Mode.View;
       return model;
     }
 
@@ -68,16 +58,16 @@ namespace Chinook.UI
     {
       ArtistContext context = new ArtistContext();
       var ar = context.GetArtists();
-    
+
       AlbumInfoModel model = BuildModel(context, ar);
-     
+
       var wnd = new AlbumInfoWindow();
-      wnd.DisplayMode=Mode.Edit; 
+      wnd.DisplayMode = Mode.Edit;
       wnd.ShowWithData(model);
-       
-    
+
+
     }
-    
+
   }
 
 }
