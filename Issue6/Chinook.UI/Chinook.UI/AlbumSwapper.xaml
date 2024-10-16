@@ -7,10 +7,10 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
 
-  <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="336,0,0,0" >
-    <Button Content="Prev" Margin="0,0,0,0" Click="Button_Prev" Width="34"/>
-    <TextBox Text="{Binding AlbumName}" x:Name="CurrentAlbum" Margin="10,0,0,0" Width="40" />
-    <Button Content="Next" Click="Button_Next" RenderTransformOrigin="-0.391,0.888" Width="34" Margin="10,0,0,0"/>
+  <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="270,0,0,0" >
+    <Button Content="Prev" Margin="0,0,0,0" Click="Button_Prev" Width="60" Height="25" RenderTransformOrigin="01.08,0.6" />
+    <TextBox Text="{Binding AlbumName}" x:Name="CurrentAlbum" Margin="10,0,0,0" Width="217" Height="20" IsReadOnly="True" RenderTransformOrigin="-0.19,0.373" />
+    <Button Content="Next" Click="Button_Next" RenderTransformOrigin="-0.3,0.888" Width="60" Margin="10,0,0,0"/>
   </StackPanel>
 
 

@@ -43,9 +43,13 @@ namespace Chinook.UI
     {
       //zrobic visibilty w zalesznosci od 
       var artistContext = new ArtistContext();
-
+      var control = new AlbumInfoControl(); 
+ //     var albumcontext = new alb
       var artist = artistContext.Artists.Where(i => i.ArtistId == AlbumInfoModel.ArtistId).Single();
+      
+      //var album=albumcontext.Albums.Where(i => i.AlbumId == AlbumInfoModel.AlbumId).Single();
       artist.Name = AlbumInfoModel.ArtistName;
+      
       artistContext.SaveChanges();
 
       Close();
