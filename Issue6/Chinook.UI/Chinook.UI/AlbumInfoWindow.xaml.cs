@@ -31,7 +31,7 @@ namespace Chinook.UI
         CloseBtn.Visibility = Visibility.Collapsed;
       }
       AlbumInfoModel = model;
-      
+
       ShowDialog();
 
 
@@ -57,30 +57,23 @@ namespace Chinook.UI
       //zrobic visibilty w zalesznosci od 
       var artistContext = new ArtistContext();
       var albumContext = new AlbumInfoWindow();
-      //     var albumcontext = new alb
       var artist = artistContext.Artists.Where(i => i.ArtistId == AlbumInfoModel.ArtistId).Single();
-      var album = artistContext.Albums.Where(a => a.AlbumId==AlbumInfoModel.AlbumId).Single();  
-      //var album=albumcontext.Albums.Where(i => i.AlbumId == AlbumInfoModel.AlbumId).Single();
+      var album = artistContext.Albums.Where(a => a.AlbumId == AlbumInfoModel.AlbumId).Single();
       artist.Name = AlbumInfoControl.ArtistName.Text;
       album.Title = AlbumInfoControl.AlbumName.Text;
       artistContext.SaveChanges();
-
       Close();
-      //zrobic visibilty w zalesznosci od 
-
     }
     private void CancelBtn_Click(object sender, RoutedEventArgs e)
     {
-      //zrobic visibilty w zalesznosci od 
 
     }
-
     internal void Show(Mode mode)
     {
       DisplayMode = mode;
 
       ArtistContext context = new ArtistContext();
-      
+
       var ar = context.GetArtists();
       var model = BuildModel(context, ar);
       ShowWithData(model);

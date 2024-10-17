@@ -21,14 +21,14 @@ namespace Chinook.ConsoleApp
 
       foreach (var art in cont.Tracks)
       {
-       
+
         //Console.WriteLine(" genreID "+art.GenreId + " ,albumid " + art.AlbumId +  " ,tr id " + art.TrackId  +" ,bytes "+ art.Bytes + " ,price "+ art.UnitPrice + ",miliseconds "+art.Milliseconds+" ,Name is : "+art.Name + "composer is "+ art.Composer);
       }
       foreach (var art in cont.AlbumTracks)
-      { 
+      {
         Console.WriteLine(" artist name is: " + art.artistName + " albumName is: ");
       }
-     
+
     }
 
   }

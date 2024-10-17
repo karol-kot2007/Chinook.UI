@@ -10,8 +10,6 @@ namespace Chinook.UI
   public partial class MainWindow : Window
   {
     public Button CancelBtn { get; set; }
-
-
     public MainWindow()
     {
       InitializeComponent();
@@ -31,16 +29,13 @@ namespace Chinook.UI
     private void Button_View_Click(object sender, RoutedEventArgs e)
     {
       var wnd = new AlbumInfoWindow();
-      
       wnd.Show(Mode.View);
     }
 
     private void Button_Edit_Click(object sender, RoutedEventArgs e)
     {
       var wnd = new AlbumInfoWindow();
-
       wnd.Show(Mode.Edit);
-
     }
 
   }
