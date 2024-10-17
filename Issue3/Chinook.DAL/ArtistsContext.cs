@@ -20,6 +20,10 @@ namespace Chinook.DAL
       Console.WriteLine($"Database path: {chinookPath}.");
       DbPath = chinookPath;
     }
+    //public AlbumContex()
+    //{
+    //  DbPath=chinookPath;
+    //}
 
     public List<Artist> GetArtists()
     {
