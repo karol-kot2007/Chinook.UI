@@ -125,6 +125,11 @@ namespace Chinook.UI
     {
 
     }
+    private void PlayBtn_Click(object sender, RoutedEventArgs e)
+    {
+
+    }
+  
     internal void Show(Mode mode)
     {
       DisplayMode = mode;

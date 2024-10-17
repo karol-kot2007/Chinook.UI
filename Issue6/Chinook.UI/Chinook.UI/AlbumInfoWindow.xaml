@@ -9,7 +9,7 @@
   <Grid>
     <StackPanel >
       <local:AlbumInfoControl HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" x:Name="AlbumInfoControl"  />
-      <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" RenderTransformOrigin="0.5,0.5" Width="93">
+      <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" RenderTransformOrigin="0.5,0.5" Width="152">
         <StackPanel.RenderTransform>
           <TransformGroup>
             <ScaleTransform/>
@@ -18,9 +18,10 @@
             <TranslateTransform/>
           </TransformGroup>
         </StackPanel.RenderTransform>
-        <Button Content="close" Name="CloseBtn" Click="CloseBtn_Click" Width="38"/>
-        <Button Content="ok" Name="OkBtn" Click="OkBtn_Click"/>
-        <Button Content="cancel" Name="CancelBtn" Click="CancelBtn_Click"/>
+        <Button Content="close" x:Name="CloseBtn" Click="CloseBtn_Click" Width="38"/>
+        <Button Content="ok" x:Name="OkBtn" Click="OkBtn_Click" Width="38"/>
+        <Button Content="Play" x:Name="PlayBtn" Click="PlayBtn_Click" Width="38"/>
+        <Button Content="cancel" x:Name="CancelBtn" Click="CancelBtn_Click"/>
       </StackPanel>
     </StackPanel>
   </Grid>

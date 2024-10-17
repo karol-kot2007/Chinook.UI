@@ -22,6 +22,7 @@ namespace Chinook.DAL.Models
     public string? Composer { get; set; }
     public int Milliseconds { get; set; }
     public int Bytes { get; set; }
+    public string? LocalPath { get; set; }
     public float UnitPrice { get; set; }
 
   }

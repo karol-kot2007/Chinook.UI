@@ -23,9 +23,7 @@ namespace Chinook.UI
       ArtistName.IsReadOnly = DisplayMode != Mode.Edit;
       AlbumName.IsReadOnly = DisplayMode != Mode.Edit;
       AlbumSwapper.setAlbumInfo(currentAlb, maxAlb);
-       
-
-
+  
     }
 
     private void dgUsers_AddingNewItem(object sender, AddingNewItemEventArgs e)
