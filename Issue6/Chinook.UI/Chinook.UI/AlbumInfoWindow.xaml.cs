@@ -1,27 +1,71 @@
 ﻿using Chinook.DAL;
 using Chinook.DAL.Models;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using System.Diagnostics;
 using System.Windows;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace Chinook.UI
-{
+{//prev i warunkibrzegowe
   public partial class AlbumInfoWindow : Window
   {
+    public int CurrentAlbumIndex { get; set; }
+    public int MaxAlbumIndex { get; set; }
     public AlbumInfoModel AlbumInfoModel { get; set; }
+
     public Mode DisplayMode { get; set; }
+
     public AlbumInfoWindow()
     {
+
       InitializeComponent();
+      AlbumInfoControl.AlbumSwapper.OnNext += AlbumInfoControl_OnNext;
+      AlbumInfoControl.AlbumSwapper.OnPrev += AlbumInfoControl_onPrev;
     }
+
+    public void AlbumInfoControl_onPrev(object? sender, EventArgs e)
+    {
+    
+
+      //if (CurrentAlbumIndex <1)
+      //{
+      //  System.Environment.Exit(0);
+      //}
+      //else
+      //{
+        Debug.WriteLine("btn clicked Prev " + MaxAlbumIndex + " " + CurrentAlbumIndex);
+        CurrentAlbumIndex--;
+      //}
+
+      SetModel();
+    }
+
+    public void AlbumInfoControl_OnNext(object? sender, EventArgs e)
+    {
+      
+     
+    
+        CurrentAlbumIndex++;
+    
+     
+      //if(CurrentAlbumIndex ==3)
+      //{
+      //  System.Environment.Exit(0);
+      //}
+      SetModel();
+    }
+
     protected override void OnInitialized(EventArgs e)
     {
       base.OnInitialized(e);
     }
-    internal void ShowWithData(AlbumInfoModel model)
+
+
+    private void SetModel(AlbumInfoModel model, int currentAlb, int maxAlb)
     {
       DataContext = model;
 
-      AlbumInfoControl.Bind(model, DisplayMode);
+      AlbumInfoControl.Bind(model, DisplayMode, currentAlb, maxAlb);
       if (DisplayMode == Mode.View)
       {
         CancelBtn.Visibility = Visibility.Collapsed;
@@ -31,18 +75,23 @@ namespace Chinook.UI
         CloseBtn.Visibility = Visibility.Collapsed;
       }
       AlbumInfoModel = model;
-
-      ShowDialog();
-
-
     }
-    private static AlbumInfoModel BuildModel(ArtistContext context, List<DAL.Models.Artist> artists)
+
+    private AlbumInfoModel BuildModel(ArtistContext context, List<DAL.Models.Artist> artists)
     {
+
       var model = new AlbumInfoModel();
       model.ArtistName = artists.First().Name;
       model.ArtistId = artists.First().ArtistId;
-      var album = context.Albums.Where(a => a.ArtistId == model.ArtistId).First();
+      var albums = context.Albums.Where(a => a.ArtistId == model.ArtistId).ToList();
+      MaxAlbumIndex = albums.Count;
+      if (CurrentAlbumIndex == 2 || CurrentAlbumIndex<0 )
+      {
+        System.Environment.Exit(0);
+      }
+      var album = albums[CurrentAlbumIndex];
       model.Tracks = context.Tracks.Where(i => i.AlbumId == album.AlbumId).ToList();
+      //   CurrentAlbumIndex
       model.AlbumId = album.AlbumId;
       model.AlbumName = album.Title;
       return model;
@@ -72,11 +121,18 @@ namespace Chinook.UI
     {
       DisplayMode = mode;
 
+      SetModel();
+
+      ShowDialog();
+    }
+
+    private void SetModel()
+    {
       ArtistContext context = new ArtistContext();
 
       var ar = context.GetArtists();
       var model = BuildModel(context, ar);
-      ShowWithData(model);
+      SetModel(model, CurrentAlbumIndex, MaxAlbumIndex);
     }
     //dodac  private void
   }
