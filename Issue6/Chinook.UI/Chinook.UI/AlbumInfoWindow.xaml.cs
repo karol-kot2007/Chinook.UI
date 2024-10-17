@@ -81,14 +81,22 @@ namespace Chinook.UI
     {
 
       var model = new AlbumInfoModel();
-      model.ArtistName = artists.First().Name;
-      model.ArtistId = artists.First().ArtistId;
+      if (CurrentAlbumIndex == 2 )
+      {
+        CurrentAlbumIndex--;
+        return model;
+      }
+      else if(CurrentAlbumIndex<0)
+      {
+        CurrentAlbumIndex++;
+        return model;
+      }
+      var artist = artists.First();
+      model.ArtistName = artist.Name;
+      model.ArtistId = artist.ArtistId;
       var albums = context.Albums.Where(a => a.ArtistId == model.ArtistId).ToList();
       MaxAlbumIndex = albums.Count;
-      if (CurrentAlbumIndex == 2 || CurrentAlbumIndex<0 )
-      {
-        System.Environment.Exit(0);
-      }
+     
       var album = albums[CurrentAlbumIndex];
       model.Tracks = context.Tracks.Where(i => i.AlbumId == album.AlbumId).ToList();
       //   CurrentAlbumIndex
@@ -132,6 +140,9 @@ namespace Chinook.UI
 
       var ar = context.GetArtists();
       var model = BuildModel(context, ar);
+      if (model.ArtistName == null)
+        return
+          ;
       SetModel(model, CurrentAlbumIndex, MaxAlbumIndex);
     }
     //dodac  private void
