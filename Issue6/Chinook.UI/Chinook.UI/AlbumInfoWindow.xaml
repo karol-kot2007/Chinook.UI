@@ -20,7 +20,6 @@
         </StackPanel.RenderTransform>
         <Button Content="close" x:Name="CloseBtn" Click="CloseBtn_Click" Width="38"/>
         <Button Content="ok" x:Name="OkBtn" Click="OkBtn_Click" Width="38"/>
-        <Button Content="Play" x:Name="PlayBtn" Click="PlayBtn_Click" Width="38"/>
         <Button Content="cancel" x:Name="CancelBtn" Click="CancelBtn_Click"/>
       </StackPanel>
     </StackPanel>

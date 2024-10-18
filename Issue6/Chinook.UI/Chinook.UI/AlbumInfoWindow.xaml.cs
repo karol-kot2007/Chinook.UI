@@ -3,6 +3,7 @@ using Chinook.DAL.Models;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System.Diagnostics;
 using System.Windows;
+using System.Windows.Media;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace Chinook.UI
@@ -12,7 +13,7 @@ namespace Chinook.UI
     public int CurrentAlbumIndex { get; set; }
     public int MaxAlbumIndex { get; set; }
     public AlbumInfoModel AlbumInfoModel { get; set; }
-
+  
     public Mode DisplayMode { get; set; }
 
     public AlbumInfoWindow()
