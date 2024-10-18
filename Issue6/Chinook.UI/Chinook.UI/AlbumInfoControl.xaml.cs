@@ -54,15 +54,17 @@ namespace Chinook.UI
       var obj = ((FrameworkElement)sender).DataContext as Track;
       int k = 0;
 
-      PlaySound();
+     
       var btn=sender as Button;
       if (btn.Content == "Play")
       {
         btn.Content = "Stop";
+        Player.Stop();
       }
       else 
       {
         btn.Content = "Play";
+        PlaySound();
       }
       k++;
 
@@ -81,10 +83,7 @@ namespace Chinook.UI
 
     }
 
-    private void StopBtn_Click(object sender, RoutedEventArgs e)
-    {
-      Player.Pause();
-    }
+   
   }
 
 }
