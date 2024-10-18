@@ -24,7 +24,14 @@
         <DataGridTemplateColumn>
           <DataGridTemplateColumn.CellTemplate>
             <DataTemplate>
-              <Button Click="PlayBtn_Click">Play</Button>
+              <Button x:Name="PlayBtn" Click="PlayBtn_Click">Play</Button>
+            </DataTemplate>
+          </DataGridTemplateColumn.CellTemplate>
+        </DataGridTemplateColumn>
+        <DataGridTemplateColumn>
+          <DataGridTemplateColumn.CellTemplate>
+            <DataTemplate>
+              <Button x:Name="StopBtn" Click="StopBtn_Click">Stop</Button>
             </DataTemplate>
           </DataGridTemplateColumn.CellTemplate>
         </DataGridTemplateColumn>

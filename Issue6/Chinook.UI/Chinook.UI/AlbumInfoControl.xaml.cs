@@ -10,13 +10,16 @@ namespace Chinook.UI
   {
     public MediaPlayer Player { get; set; }
     public Mode DisplayMode { get; set; }
-    public ArtistContext ArtistId { get;  set; }
-    public Track LocalPath { get;  set; }
-    
+    public ArtistContext ArtistId { get; set; }
+    public Track LocalPath { get; set; }
+    public Button CancelBtn { get; set; }
     public AlbumInfoControl()
     {
       InitializeComponent();
       Player = new MediaPlayer();
+      Button btn = new Button();
+
+
     }
     internal void Bind(AlbumInfoModel model, Mode mode, int currentAlb, int maxAlb)
     {
@@ -25,11 +28,12 @@ namespace Chinook.UI
       ArtistName.IsReadOnly = DisplayMode != Mode.Edit;
       AlbumName.IsReadOnly = DisplayMode != Mode.Edit;
       AlbumSwapper.setAlbumInfo(currentAlb, maxAlb);
+
     }
 
     private void dgUsers_AddingNewItem(object sender, AddingNewItemEventArgs e)
     {
-   
+
     }
 
     private void Close_Button(object sender, RoutedEventArgs e)
@@ -45,25 +49,41 @@ namespace Chinook.UI
     private void PlayBtn_Click(object sender, RoutedEventArgs e)
     {
       //locql path zakodowac
-      Track LocalPath = new Track();
 
+      Track LocalPath = new Track();
       var obj = ((FrameworkElement)sender).DataContext as Track;
       int k = 0;
-      k++;
+
       PlaySound();
+      var btn=sender as Button;
+      if (btn.Content == "Play")
+      {
+        btn.Content = "Stop";
+      }
+      else 
+      {
+        btn.Content = "Play";
+      }
+      k++;
+
     }
 
-    
+
     private void PlaySound()
     {
       Uri uri = new Uri(@"C:\Users\Karol\Documents\songs\Michael Jackson - Smooth Criminal (Official Video).mp3");
-
       Player.Open(uri);
       Player.Play();
+
     }
     private void GridAlbum_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
 
+    }
+
+    private void StopBtn_Click(object sender, RoutedEventArgs e)
+    {
+      Player.Pause();
     }
   }
 
