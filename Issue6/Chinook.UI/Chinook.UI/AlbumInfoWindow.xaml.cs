@@ -11,7 +11,9 @@ namespace Chinook.UI
   public partial class AlbumInfoWindow : Window
   {
     public int CurrentAlbumIndex { get; set; }
+    public int CurrentArtistIndex { get; set; }
     public int MaxAlbumIndex { get; set; }
+    public int MaxArtistIndex { get; set; }
     public AlbumInfoModel AlbumInfoModel { get; set; }
     public ArtistInfo ArtistInfo { get; set; }
     public AlbumInfo AlbumInfo { get; set; }
@@ -27,7 +29,7 @@ namespace Chinook.UI
 
     public void AlbumInfoControl_onPrev(object? sender, EventArgs e)
     {
-    
+
 
       //if (CurrentAlbumIndex <1)
       //{
@@ -35,8 +37,8 @@ namespace Chinook.UI
       //}
       //else
       //{
-        Debug.WriteLine("btn clicked Prev " + MaxAlbumIndex + " " + CurrentAlbumIndex);
-        CurrentAlbumIndex--;
+      Debug.WriteLine("btn clicked Prev " + MaxAlbumIndex + " " + CurrentAlbumIndex);
+      CurrentAlbumIndex--;
       //}
 
       SetModel();
@@ -44,12 +46,12 @@ namespace Chinook.UI
 
     public void AlbumInfoControl_OnNext(object? sender, EventArgs e)
     {
-      
-     
-    
-        CurrentAlbumIndex++;
-    
-     
+
+
+
+      CurrentAlbumIndex++;
+
+
       //if(CurrentAlbumIndex ==3)
       //{
       //  System.Environment.Exit(0);
@@ -63,11 +65,11 @@ namespace Chinook.UI
     }
 
 
-    private void SetModel(AlbumInfoModel model, int currentAlb, int maxAlb)
+    private void SetModel(AlbumInfoModel model, int currentAlb, int maxAlb,int maxArtist)
     {
       DataContext = model;
-
-      AlbumInfoControl.Bind(model, DisplayMode,  maxAlb);
+      
+      AlbumInfoControl.Bind(model, DisplayMode, maxAlb, currentAlb,maxArtist);
       if (DisplayMode == Mode.View)
       {
         CancelBtn.Visibility = Visibility.Collapsed;
@@ -83,12 +85,12 @@ namespace Chinook.UI
     {
 
       var model = new AlbumInfoModel();
-      if (CurrentAlbumIndex == 2 )
+      if (CurrentAlbumIndex == 2)
       {
         CurrentAlbumIndex--;
         return model;
       }
-      else if(CurrentAlbumIndex<0)
+      else if (CurrentAlbumIndex < 0)
       {
         CurrentAlbumIndex++;
         return model;
@@ -98,7 +100,8 @@ namespace Chinook.UI
       model.ArtistId = artist.ArtistId;
       var albums = context.Albums.Where(a => a.ArtistId == model.ArtistId).ToList();
       MaxAlbumIndex = albums.Count;
-     
+      MaxArtistIndex=artists.Count; 
+
       var album = albums[CurrentAlbumIndex];
       model.Tracks = context.Tracks.Where(i => i.AlbumId == album.AlbumId).ToList();
       //   CurrentAlbumIndex
@@ -131,7 +134,7 @@ namespace Chinook.UI
     {
 
     }
-  
+
     internal void Show(Mode mode)
     {
       DisplayMode = mode;
@@ -150,7 +153,7 @@ namespace Chinook.UI
       if (model.ArtistName == null)
         return
           ;
-      SetModel(model, CurrentAlbumIndex, MaxAlbumIndex);
+      SetModel(model, CurrentAlbumIndex, MaxAlbumIndex,MaxArtistIndex);
     }
     //dodac  private void
   }

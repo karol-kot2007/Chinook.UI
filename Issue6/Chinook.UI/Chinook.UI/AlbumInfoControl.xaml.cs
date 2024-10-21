@@ -13,6 +13,9 @@ namespace Chinook.UI
     public ArtistContext ArtistId { get; set; }
     public Track LocalPath { get; set; }
     public Button CancelBtn { get; set; }
+    // public AlbumInfo AlbumName { get; set; }
+    public static object Album { get; private set; }
+
     public AlbumInfoControl()
     {
       InitializeComponent();
@@ -21,13 +24,15 @@ namespace Chinook.UI
 
 
     }
-    internal void Bind(AlbumInfoModel model, Mode mode,  int maxAlb)
+    internal void Bind(AlbumInfoModel model, Mode mode, int currentAlb, int maxAlb,int maxArtist)
     {
       GridAlbum.ItemsSource = model.Tracks;
       DisplayMode = mode;
+      var name = model.ArtistName;
+      var Aname = model.AlbumName;
       ArtistName.IsReadOnly = DisplayMode != Mode.Edit;
       AlbumName.IsReadOnly = DisplayMode != Mode.Edit;
-    //  AlbumSwapper.setAlbumInfo( maxAlb);
+      AlbumSwapper.SetArtistInfo(currentAlb, maxAlb, name, Aname,maxArtist);
 
     }
 
@@ -54,14 +59,14 @@ namespace Chinook.UI
       var obj = ((FrameworkElement)sender).DataContext as Track;
       int k = 0;
 
-     
-      var btn=sender as Button;
+
+      var btn = sender as Button;
       if (btn.Content == "Play")
       {
         btn.Content = "Stop";
         Player.Stop();
       }
-      else 
+      else
       {
         btn.Content = "Play";
         PlaySound();
@@ -83,7 +88,7 @@ namespace Chinook.UI
 
     }
 
-   
+
   }
 
 }

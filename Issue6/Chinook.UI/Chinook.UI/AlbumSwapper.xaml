@@ -8,15 +8,15 @@
              d:DesignHeight="450" d:DesignWidth="800">
   <StackPanel >
     <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="270,0,0,0" >
-    <Button Content="Prev" Margin="0,0,0,0" Click="Button_Prev" Width="60" Height="25" RenderTransformOrigin="01.08,0.6" />
-      <TextBox  x:Name="CurrentAlabum" Margin="10,0,0,0" Width="217" Height="20" IsReadOnly="True" RenderTransformOrigin="-0.19,0.373" Text="{Binding ArtistName}" />
+      <Button Content="Prev" Margin="0,0,0,0" Click="Button_Prev" Width="60" Height="25" RenderTransformOrigin="01.08,0.6" />
+      <TextBox  x:Name="CurrentAlbum" Margin="10,0,0,0" Width="217" Height="20" IsReadOnly="True" RenderTransformOrigin="-0.19,0.373"  />
       <Button Content="Next" Click="Button_Next" RenderTransformOrigin="-0.3,0.888" Width="60" Height="25" Margin="10,0,0,0"/>
-   
-  </StackPanel>
+
+    </StackPanel>
     <Button Content="Prev" Margin="-30,10,0,0" Click="Button_Prev" Width="60" Height="25" RenderTransformOrigin="1.08,0.6" />
-    <TextBox  x:Name="CurdrentAlbum" Margin="270,-25,0,0" Width="217" Height="20" IsReadOnly="True" RenderTransformOrigin="0,0.373"  Text="{Binding AlbumName}"/>
+    <TextBox  x:Name="CurdrentAlbum" Margin="270,-25,0,0" Width="217" Height="20" IsReadOnly="True" RenderTransformOrigin="0,0.373"  />
     <Button Content="Next" Click="Button_Next" RenderTransformOrigin="0,0" Width="60" Height="25" Margin="566,-25,0,0"/>
-    
+
   </StackPanel>
 
 </UserControl> 

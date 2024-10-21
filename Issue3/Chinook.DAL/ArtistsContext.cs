@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Chinook.DAL
 {
- public class ArtistContext : DbContext
+  public class ArtistContext : DbContext
   {
     public DbSet<Track> Tracks { get; set; }
     public DbSet<Artist> Artists { get; set; }

@@ -5,6 +5,7 @@ namespace Chinook.UI
   {
     public event EventHandler OnPrev;
     public event EventHandler OnNext;
+    public AlbumInfoModel ArtistName { get; set; }
     public AlbumSwapper()
     {
       InitializeComponent();
@@ -29,10 +30,13 @@ namespace Chinook.UI
       }
     }
 
-    internal void setAlbumInfo(int currentAlb, int maxAlb)
+    internal void SetArtistInfo(int currentAlb, int maxAlb, string name,string ArtistName,int maxArtist)
     {
-      
-      CurrentAlabum.Text = "album " + (currentAlb+1) + "/"+maxAlb;
+
+      CurrentAlbum.Text = "Artist : " + name + " " + (maxAlb + 1) + " " + "/ " + currentAlb + " ";
+      CurdrentAlbum.Text ="Album : " + ArtistName + " " + (maxArtist + 1) + " " + "/ "  + " ";
+     
     }
+
   }
 }
