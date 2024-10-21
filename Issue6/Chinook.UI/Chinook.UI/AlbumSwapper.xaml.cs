@@ -32,7 +32,7 @@ namespace Chinook.UI
     internal void setAlbumInfo(int currentAlb, int maxAlb)
     {
       
-      CurrentAlbum.Text = "album " + (currentAlb+1) + "/"+maxAlb;
+      CurrentAlabum.Text = "album " + (currentAlb+1) + "/"+maxAlb;
     }
   }
 }

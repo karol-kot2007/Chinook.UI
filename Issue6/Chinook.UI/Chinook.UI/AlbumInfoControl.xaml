@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
   <StackPanel Orientation="Vertical" >
-    <local:AlbumSwapper x:Name="AlbumSwapper"/>
+    <local:AlbumSwapper x:Name="AlbumSwapper" Height="139"/>
     <StackPanel Orientation="Horizontal">
       <Label Content="Album:"/>
       <TextBox Text="{Binding AlbumName}"    Name="AlbumName" />

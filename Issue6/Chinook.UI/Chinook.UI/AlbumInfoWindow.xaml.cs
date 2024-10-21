@@ -13,7 +13,8 @@ namespace Chinook.UI
     public int CurrentAlbumIndex { get; set; }
     public int MaxAlbumIndex { get; set; }
     public AlbumInfoModel AlbumInfoModel { get; set; }
-  
+    public ArtistInfo ArtistInfo { get; set; }
+    public AlbumInfo AlbumInfo { get; set; }
     public Mode DisplayMode { get; set; }
 
     public AlbumInfoWindow()
@@ -66,7 +67,7 @@ namespace Chinook.UI
     {
       DataContext = model;
 
-      AlbumInfoControl.Bind(model, DisplayMode, currentAlb, maxAlb);
+      AlbumInfoControl.Bind(model, DisplayMode,  maxAlb);
       if (DisplayMode == Mode.View)
       {
         CancelBtn.Visibility = Visibility.Collapsed;
