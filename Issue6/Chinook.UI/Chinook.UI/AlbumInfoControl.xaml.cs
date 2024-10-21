@@ -24,7 +24,7 @@ namespace Chinook.UI
 
 
     }
-    internal void Bind(AlbumInfoModel model, Mode mode, int currentAlb, int maxAlb,int maxArtist)
+    internal void Bind(AlbumInfoModel model, Mode mode, int currentAlb, int maxAlb,int maxArtist,int currentArtist)
     {
       GridAlbum.ItemsSource = model.Tracks;
       DisplayMode = mode;
@@ -32,7 +32,7 @@ namespace Chinook.UI
       var Aname = model.AlbumName;
       ArtistName.IsReadOnly = DisplayMode != Mode.Edit;
       AlbumName.IsReadOnly = DisplayMode != Mode.Edit;
-      AlbumSwapper.SetArtistInfo(currentAlb, maxAlb, name, Aname,maxArtist);
+      AlbumSwapper.SetArtistInfo(currentAlb, maxAlb, name, Aname,maxArtist,currentArtist);
 
     }
 

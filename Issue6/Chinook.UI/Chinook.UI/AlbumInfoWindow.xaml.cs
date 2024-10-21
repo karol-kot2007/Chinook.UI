@@ -65,11 +65,11 @@ namespace Chinook.UI
     }
 
 
-    private void SetModel(AlbumInfoModel model, int currentAlb, int maxAlb,int maxArtist)
+    private void SetModel(AlbumInfoModel model, int currentAlb, int maxAlb,int maxArtist,int currentArtist)
     {
       DataContext = model;
       
-      AlbumInfoControl.Bind(model, DisplayMode, maxAlb, currentAlb,maxArtist);
+      AlbumInfoControl.Bind(model, DisplayMode, maxAlb, currentAlb,maxArtist,currentArtist);
       if (DisplayMode == Mode.View)
       {
         CancelBtn.Visibility = Visibility.Collapsed;
@@ -153,7 +153,7 @@ namespace Chinook.UI
       if (model.ArtistName == null)
         return
           ;
-      SetModel(model, CurrentAlbumIndex, MaxAlbumIndex,MaxArtistIndex);
+      SetModel(model, CurrentAlbumIndex, MaxAlbumIndex,MaxArtistIndex,CurrentArtistIndex);
     }
     //dodac  private void
   }
