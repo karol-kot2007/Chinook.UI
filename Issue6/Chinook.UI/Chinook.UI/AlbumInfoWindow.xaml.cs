@@ -124,7 +124,7 @@ namespace Chinook.UI
     }
     private void CancelBtn_Click(object sender, RoutedEventArgs e)
     {
-
+      SetModel();
     }
     private void PlayBtn_Click(object sender, RoutedEventArgs e)
     {
