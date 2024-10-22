@@ -81,7 +81,7 @@ namespace Chinook.UI
       AlbumInfoModel = model;
     }
 
-    private AlbumInfoModel BuildModel(ArtistContext context, List<DAL.Models.Artist> artists)
+    private AlbumInfoModel BuildModel(ArtistContext context)
     {
 
       var model = new AlbumInfoModel();
@@ -95,18 +95,19 @@ namespace Chinook.UI
         CurrentAlbumIndex++;
         return model;
       }
-      var artist = artists.First();
-      model.ArtistName = artist.Name;
-      model.ArtistId = artist.ArtistId;
-      var albums = context.Albums.Where(a => a.ArtistId == model.ArtistId).ToList();
+      //var ar = context.GetArtists();
+      var artist = context.Artists.First();
+      model.ArtistInfo.ArtistName=artist.Name ;//
+      model.ArtistInfo.Id = artist.ArtistId;
+      var albums = context.Albums.Where(a => a.ArtistId == model.ArtistInfo.Id).ToList();
       MaxAlbumIndex = albums.Count;
-      MaxArtistIndex=artists.Count; 
+      MaxArtistIndex=context.Artists.Count(); 
 
       var album = albums[CurrentAlbumIndex];
       model.Tracks = context.Tracks.Where(i => i.AlbumId == album.AlbumId).ToList();
       //   CurrentAlbumIndex
-      model.AlbumId = album.AlbumId;
-      model.AlbumName = album.Title;
+      model.AlbumInfo.Id = album.AlbumId;
+      model.AlbumInfo.AlbumName = album.Title;
       return model;
     }
     private void CloseBtn_Click(object sender, RoutedEventArgs e)
@@ -119,8 +120,8 @@ namespace Chinook.UI
       //zrobic visibilty w zalesznosci od 
       var artistContext = new ArtistContext();
       var albumContext = new AlbumInfoWindow();
-      var artist = artistContext.Artists.Where(i => i.ArtistId == AlbumInfoModel.ArtistId).Single();
-      var album = artistContext.Albums.Where(a => a.AlbumId == AlbumInfoModel.AlbumId).Single();
+      var artist = artistContext.Artists.Where(i => i.ArtistId == AlbumInfoModel.ArtistInfo.Id).Single();
+      var album = artistContext.Albums.Where(a => a.AlbumId == AlbumInfoModel.AlbumInfo.Id).Single();
       artist.Name = AlbumInfoControl.ArtistName.Text;
       album.Title = AlbumInfoControl.AlbumName.Text;
       artistContext.SaveChanges();
@@ -148,9 +149,9 @@ namespace Chinook.UI
     {
       ArtistContext context = new ArtistContext();
 
-      var ar = context.GetArtists();
-      var model = BuildModel(context, ar);
-      if (model.ArtistName == null)
+      
+      var model = BuildModel(context);
+      if (model.ArtistInfo.ArtistName== null)
         return
           ;
       SetModel(model, CurrentAlbumIndex, MaxAlbumIndex,MaxArtistIndex,CurrentArtistIndex);

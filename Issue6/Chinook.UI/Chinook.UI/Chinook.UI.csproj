@@ -6,6 +6,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
+    <BaseOutputPath></BaseOutputPath>
   </PropertyGroup>
 
   <ItemGroup>
@@ -15,6 +16,12 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\Issue3\Chinook.DAL\Chinook.DAL.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="mp3\Michael Jackson - Smooth Criminal %28Official Video%29.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>
