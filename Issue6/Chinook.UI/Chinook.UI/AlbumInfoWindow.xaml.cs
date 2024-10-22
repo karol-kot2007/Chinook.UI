@@ -26,6 +26,8 @@ namespace Chinook.UI
       InitializeComponent();
       AlbumInfoControl.AlbumSwapper.OnNext += AlbumInfoControl_OnNext;
       AlbumInfoControl.AlbumSwapper.OnPrev += AlbumInfoControl_onPrev;
+      AlbumInfoControl.ArtistSwapper.OnNext += AlbumInfoControl_OnNext;
+      AlbumInfoControl.ArtistSwapper.OnPrev += AlbumInfoControl_OnNext;
     }
 
     public void AlbumInfoControl_onPrev(object? sender, EventArgs e)
