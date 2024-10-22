@@ -78,7 +78,7 @@ namespace Chinook.UI
 
     private void PlaySound()
     {
-      Uri uri = new Uri(@"mp3\Michael Jackson - Smooth Criminal (Official Video).mp3");
+      Uri uri = new Uri(@"mp3\Michael Jackson - Smooth Criminal (Official Video).mp3", UriKind.Relative);
       Player.Open(uri);
       Player.Play();
 
