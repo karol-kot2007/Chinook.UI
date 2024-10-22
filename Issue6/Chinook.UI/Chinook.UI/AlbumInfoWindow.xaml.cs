@@ -100,8 +100,9 @@ namespace Chinook.UI
       model.ArtistInfo.ArtistName=artist.Name ;//
       model.ArtistInfo.Id = artist.ArtistId;
       var albums = context.Albums.Where(a => a.ArtistId == model.ArtistInfo.Id).ToList();
+      var artt= context.Artists.Where(a => a.albumId == model.AlbumInfo.Id).ToList(); 
       MaxAlbumIndex = albums.Count;
-      MaxArtistIndex=context.Artists.Count(); 
+      MaxArtistIndex=artt.Count; 
 
       var album = albums[CurrentAlbumIndex];
       model.Tracks = context.Tracks.Where(i => i.AlbumId == album.AlbumId).ToList();

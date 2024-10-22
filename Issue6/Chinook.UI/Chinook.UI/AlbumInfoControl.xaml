@@ -10,11 +10,11 @@
     <local:AlbumSwapper x:Name="AlbumSwapper" Height="139"/>
     <StackPanel Orientation="Horizontal">
       <Label Content="Album:"/>
-      <TextBox Text="{Binding AlbumName}"    Name="AlbumName" />
+      <TextBox Text=""    Name="AlbumName" />
     </StackPanel>
     <StackPanel Orientation="Horizontal">
       <Label Content="Artist:" />
-      <TextBox Text="{Binding ArtistName}" Name="ArtistName" />
+      <TextBox Text=" " Name="ArtistName" />
     </StackPanel>
     <DataGrid x:Name="GridAlbum" AutoGenerateColumns="False" Width="604" SelectionChanged="GridAlbum_SelectionChanged" >
       <DataGrid.Columns>

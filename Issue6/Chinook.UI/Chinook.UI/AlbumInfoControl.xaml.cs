@@ -24,15 +24,16 @@ namespace Chinook.UI
 
 
     }
-    internal void Bind(AlbumInfoModel model, Mode mode, int currentAlb, int maxAlb,int maxArtist,int currentArtist)
+    internal void Bind(AlbumInfoModel model, Mode mode, int currentAlb, int maxAlb, int maxArtist, int currentArtist)
     {
+      
       GridAlbum.ItemsSource = model.Tracks;
       DisplayMode = mode;
-      var name = model.ArtistInfo.ArtistName;
-      var Aname = model.AlbumInfo.AlbumName;
-      ArtistName.IsReadOnly = DisplayMode != Mode.Edit;
-      AlbumName.IsReadOnly = DisplayMode != Mode.Edit;
-      AlbumSwapper.SetArtistInfo(currentAlb, maxAlb, name, Aname,maxArtist,currentArtist);
+      var ArtistName = model.ArtistInfo.ArtistName;
+      var AlbumName = model.AlbumInfo.AlbumName;
+      this.ArtistName.IsReadOnly = DisplayMode != Mode.Edit;
+      this.AlbumName.IsReadOnly = DisplayMode != Mode.Edit;
+      AlbumSwapper.SetArtistInfo(currentAlb, maxAlb, ArtistName, AlbumName, maxArtist, currentArtist);
 
     }
 
@@ -78,7 +79,7 @@ namespace Chinook.UI
 
     private void PlaySound()
     {
-      Uri uri = new Uri(@"mp3\Michael Jackson - Smooth Criminal (Official Video).mp3");
+      Uri uri = new Uri(@"mp3\Michael Jackson - Smooth Criminal (Official Video).mp3", UriKind.Relative);
       Player.Open(uri);
       Player.Play();
 
