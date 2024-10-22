@@ -1,26 +1,26 @@
 ﻿using Chinook.DAL.Models;
 namespace Chinook.UI
 {
-  public class AlbumInfo
+  public class Info
   {
-    public string AlbumName { get; set; }
+    public string Name { get; set; }
     public int Id { get; set; }
+    public int Current { get; set; }
+    public int Max { get; set; }
   }
-  public class ArtistInfo
+  public class ArtistInfo : Info
   {
-    public string ArtistName { get; set; }
-    public int Id {get; set;}
+
+  }
+  public class AlbumInfo : Info
+  {
+
   }
   public class AlbumInfoModel
   {
-    //  public string AlbumName { get; set; }
-    //  public int AlbumId { get; set; }
-    //  public string? ArtistName { get; set; }
-    //  public int ArtistId { get; set; }
-    public AlbumInfo AlbumInfo { get; set; } = new AlbumInfo();  
+    public  AlbumInfo AlbumInfo { get; set; } = new AlbumInfo();  
     public ArtistInfo ArtistInfo { get; set; } = new ArtistInfo();
     public List<Track> Tracks{ get; set; }
-    //public int ArtistId { get; internal set; }
-    //public int AlbumId { get; internal set; }
+  
   }
 }

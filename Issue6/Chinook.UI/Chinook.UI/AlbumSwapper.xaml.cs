@@ -30,12 +30,16 @@ namespace Chinook.UI
       }
     }
 
-    internal void SetArtistInfo(int currentAlb, int maxAlb, string name,string ArtistName,int maxArtist, int currentArtist)
+    internal void Bind(string prefix,int current, int max, string name)
     {
 
-      CurrentArtist.Text = "Artist : " + name + " " + (maxAlb + 1) + " " + "/ " + currentAlb + " ";
-      CurrentAlbum.Text ="Album : " + ArtistName + " " + (maxArtist + 1) + " " + "/ "+  currentArtist + " ";
+      Content.Text =prefix+ " : " + name + " " +(current + 1)+ " " + "/"+ max + " ";
+      //CurrentAlbum.Text ="Album : " + ArtistName + " " + (currentAlb + 1) + " " + "/ "+  maxAlb + " ";
      
+    }
+    internal void Bind(string prefix, Info info)
+    {
+      Bind(prefix, info.Current, info.Max, info.Name);
     }
 
   }

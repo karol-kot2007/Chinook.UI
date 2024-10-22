@@ -2,6 +2,7 @@
 using Chinook.DAL.Models;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System.Diagnostics;
+using System.Linq;
 using System.Windows;
 using System.Windows.Media;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
@@ -65,11 +66,11 @@ namespace Chinook.UI
     }
 
 
-    private void SetModel(AlbumInfoModel model, int currentAlb, int maxAlb,int maxArtist,int currentArtist)
+    private void SetModel(AlbumInfoModel model)
     {
       DataContext = model;
       
-      AlbumInfoControl.Bind(model, DisplayMode, maxAlb, currentAlb,maxArtist,currentArtist);
+      AlbumInfoControl.Bind(model, DisplayMode);
       if (DisplayMode == Mode.View)
       {
         CancelBtn.Visibility = Visibility.Collapsed;
@@ -83,7 +84,7 @@ namespace Chinook.UI
 
     private AlbumInfoModel BuildModel(ArtistContext context)
     {
-
+      MaxArtistIndex = context.Artists.Count();
       var model = new AlbumInfoModel();
       if (CurrentAlbumIndex == 2)
       {
@@ -97,18 +98,24 @@ namespace Chinook.UI
       }
       //var ar = context.GetArtists();
       var artist = context.Artists.First();
-      model.ArtistInfo.ArtistName=artist.Name ;//
-      model.ArtistInfo.Id = artist.ArtistId;
-      var albums = context.Albums.Where(a => a.ArtistId == model.ArtistInfo.Id).ToList();
-      var artt= context.Artists.Where(a => a.albumId == model.AlbumInfo.Id).ToList(); 
-      MaxAlbumIndex = albums.Count;
-      MaxArtistIndex=artt.Count; 
 
+      model.ArtistInfo.Name=artist.Name ;//
+      model.ArtistInfo.Id = artist.ArtistId;
+      model.ArtistInfo.Max=MaxArtistIndex;
+      model.ArtistInfo.Current=CurrentArtistIndex;
+      var albums = context.Albums.Where(a => a.ArtistId == model.ArtistInfo.Id).ToList();
+      MaxAlbumIndex = albums.Count;
       var album = albums[CurrentAlbumIndex];
+      model.AlbumInfo.Id = album.AlbumId;
+      model.AlbumInfo.Name = album.Title;
+      model.AlbumInfo.Max=MaxAlbumIndex;
+      model.AlbumInfo.Current = CurrentAlbumIndex;
+
+
+      //   var album = albums[CurrentAlbumIndex];
       model.Tracks = context.Tracks.Where(i => i.AlbumId == album.AlbumId).ToList();
       //   CurrentAlbumIndex
-      model.AlbumInfo.Id = album.AlbumId;
-      model.AlbumInfo.AlbumName = album.Title;
+      
       return model;
     }
     private void CloseBtn_Click(object sender, RoutedEventArgs e)
@@ -152,10 +159,9 @@ namespace Chinook.UI
 
       
       var model = BuildModel(context);
-      if (model.ArtistInfo.ArtistName== null)
-        return
-          ;
-      SetModel(model, CurrentAlbumIndex, MaxAlbumIndex,MaxArtistIndex,CurrentArtistIndex);
+      if (model.ArtistInfo.Name== null)
+        return;
+      SetModel(model);
     }
     //dodac  private void
   }
