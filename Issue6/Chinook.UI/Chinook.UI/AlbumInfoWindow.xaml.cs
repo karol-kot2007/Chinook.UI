@@ -24,22 +24,38 @@ namespace Chinook.UI
     {
 
       InitializeComponent();
+      
       AlbumInfoControl.AlbumSwapper.OnNext += AlbumInfoControl_OnNext;
       AlbumInfoControl.AlbumSwapper.OnPrev += AlbumInfoControl_onPrev;
-      AlbumInfoControl.ArtistSwapper.OnNext += AlbumInfoControl_OnNext;
-      AlbumInfoControl.ArtistSwapper.OnPrev += AlbumInfoControl_OnNext;
+      AlbumInfoControl.ArtistSwapper.OnNext +=ArtistInfoControl_OnNext;
+      AlbumInfoControl.ArtistSwapper.OnPrev += ArtistInfoControl_onPrev;
     }
-
+    //private AlbumInfoModel BuildModelFromView(ArtistContext context)
+    //{
+      
+    //}
     public void AlbumInfoControl_onPrev(object? sender, EventArgs e)
     {
       Debug.WriteLine("btn clicked Prev " + MaxAlbumIndex + " " + CurrentAlbumIndex);
       CurrentAlbumIndex--;
+
       SetModel();
     }
 
+    public void ArtistInfoControl_onPrev(object? sender, EventArgs e)
+    {
+      CurrentArtistIndex--;
+      SetModel();
+    }
+    public void ArtistInfoControl_OnNext(object? sender, EventArgs e)
+    {
+      CurrentArtistIndex++;
+      SetModel();
+    }
     public void AlbumInfoControl_OnNext(object? sender, EventArgs e)
     {
       CurrentAlbumIndex++;
+     
       SetModel();
     }
 
@@ -72,18 +88,29 @@ namespace Chinook.UI
       if (CurrentAlbumIndex == 2)
       {
         CurrentAlbumIndex--;
+      //  CurrentArtistIndex--;
         return model;
       }
       else if (CurrentAlbumIndex < 0)
       {
         CurrentAlbumIndex++;
+        
         return model;
+      }
+      else if(CurrentArtistIndex <0)
+      {
+        CurrentArtistIndex++;
+      }
+      else if (CurrentArtistIndex < 275)
+      {
+        CurrentArtistIndex--;
       }
       var artist = context.Artists.First();
       model.ArtistInfo.Name = artist.Name;//
       model.ArtistInfo.Id = artist.ArtistId;
       model.ArtistInfo.Max = MaxArtistIndex;
       model.ArtistInfo.Current = CurrentArtistIndex;
+      
       var albums = context.Albums.Where(a => a.ArtistId == model.ArtistInfo.Id).ToList();
       MaxAlbumIndex = albums.Count;
       var album = albums[CurrentAlbumIndex];
@@ -142,6 +169,7 @@ namespace Chinook.UI
         return;
       SetModel(model);
     }
+
     //dodac  private void
   }
 }
