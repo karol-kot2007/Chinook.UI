@@ -9,6 +9,15 @@ namespace Chinook.DAL
     public DbSet<Artist> Artists { get; set; }
     public DbSet<AlbumTrack> AlbumTracks { get; set; }
     public DbSet<Album> Albums { get; set; }
+    //public DbSet<Album> artistName { get; set; }
+    //public DbSet<AlbumTracks> albumName { get; set; }
+    //public DbSet<AlbumTracks> artistId { get; set; }
+    //public DbSet<AlbumTracks> albumId { get; set; }
+    //public DbSet<AlbumTracks> trackId { get; set; }
+    //public DbSet<AlbumTracks> trackName { get; set; }
+
+
+    // tabvele jak powzyej zrobvic 
     public static string chinookPath = "chinook.db";
     public string DbPath { get; }
     public ArtistContext()

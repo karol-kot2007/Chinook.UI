@@ -38,4 +38,13 @@ namespace Chinook.DAL.Models
     public int AlbumId { get; set; }
     public int ArtistId { get; set; }
   }
+  //public class AlbumTracks
+  //{
+  //  public string artistName { get; set; }
+  //  public string albumName { get; set; }
+  //  public int artistId { get; set; }
+  //  public int albumId { get; set; }
+  //  public int trackId { get; set; }
+  //  public string trackName { get; set; }
+  //}
 }
