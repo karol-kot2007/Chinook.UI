@@ -1,5 +1,6 @@
 ﻿using Chinook.DAL;
 using Chinook.DAL.Models;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System.Diagnostics;
 using System.Linq;
@@ -27,13 +28,13 @@ namespace Chinook.UI
     {
 
       InitializeComponent();
-      
+
       AlbumInfoControl.AlbumSwapper.OnNext += AlbumInfoControl_OnNext;
       AlbumInfoControl.AlbumSwapper.OnPrev += AlbumInfoControl_onPrev;
-      AlbumInfoControl.ArtistSwapper.OnNext +=ArtistInfoControl_OnNext;
+      AlbumInfoControl.ArtistSwapper.OnNext += ArtistInfoControl_OnNext;
       AlbumInfoControl.ArtistSwapper.OnPrev += ArtistInfoControl_onPrev;
     }
- 
+
     public void AlbumInfoControl_onPrev(object? sender, EventArgs e)
     {
       Debug.WriteLine("btn clicked Prev " + MaxAlbumIndex + " " + CurrentAlbumIndex);
@@ -55,7 +56,7 @@ namespace Chinook.UI
     public void AlbumInfoControl_OnNext(object? sender, EventArgs e)
     {
       CurrentAlbumIndex++;
-     
+
       SetModel();
     }
 
@@ -80,14 +81,26 @@ namespace Chinook.UI
       }
       AlbumInfoModel = model;
     }
+    protected void OnModelCreating(ModelBuilder modelBuilder)
+    {
+      modelBuilder
+          .Entity<AlbumTracks>(
+              eb =>
+              {
+                eb.HasNoKey();
+                eb.ToView("AlbumTracks");
+                eb.Property(v => v.artistName).HasColumnName("artistName");
+              });
+    }
     private AlbumInfoModel BuildModelFromView(ArtistContext context)
     {
-      MaxArtistIndex = context.Artists.Count();
+      MaxArtistIndex = context.AlbumTracks.Count();
       var model = new AlbumInfoModel();
-      if (CurrentAlbumIndex == 2)
+
+      if (CurrentAlbumIndex > MaxAlbumIndex)
       {
         CurrentAlbumIndex--;
-     
+
         return model;
       }
       else if (CurrentAlbumIndex < 0)
@@ -104,23 +117,23 @@ namespace Chinook.UI
       {
         CurrentArtistIndex--;
       }
-      var artist = context.Artists.First();
-      model.ArtistInfo.Name = artist.Name;//
-      model.ArtistInfo.Id = artist.ArtistId;
+      var artist = context.AlbumTracks.First();
+      model.ArtistInfo.Name = artist.artistName;//
+      model.ArtistInfo.Id = artist.artistId;
       model.ArtistInfo.Max = context.Artists.Count();
       model.ArtistInfo.Current = CurrentArtistIndex;
       var tracks = context.Tracks.First();
       model.TrackInfo.Id = tracks.TrackId;
       model.TrackInfo.Name = tracks.Name;
-      var albums = context.Albums.Where(a => a.ArtistId == model.ArtistInfo.Id).ToList();
-      MaxAlbumIndex = albums.Count;
-      
+      var albums = context.AlbumTracks.Where(a => a.artistId == model.ArtistInfo.Id).ToList();
+      //MaxAlbumIndex = albums.Count;
+
       var album = albums[CurrentAlbumIndex];
-      model.AlbumInfo.Id = album.AlbumId;
-      model.AlbumInfo.Name = album.Title;
+      model.AlbumInfo.Id = album.artistId;
+      model.AlbumInfo.Name = album.trackName;
       model.AlbumInfo.Max = MaxAlbumIndex;
       model.AlbumInfo.Current = CurrentAlbumIndex;
-      model.Tracks = context.Tracks.Where(i => i.AlbumId == album.AlbumId).ToList();
+      model.Tracks = context.Tracks.Where(i => i.AlbumId == album.albumId).ToList();
       return model;
     }
     private AlbumInfoModel BuildModel(ArtistContext context)
@@ -130,16 +143,16 @@ namespace Chinook.UI
       if (CurrentAlbumIndex == 2)
       {
         CurrentAlbumIndex--;
-      //  CurrentArtistIndex--;
+        //  CurrentArtistIndex--;
         return model;
       }
       else if (CurrentAlbumIndex < 0)
       {
         CurrentAlbumIndex++;
-        
+
         return model;
       }
-      else if(CurrentArtistIndex <0)
+      else if (CurrentArtistIndex < 0)
       {
         CurrentArtistIndex++;
       }
@@ -152,7 +165,7 @@ namespace Chinook.UI
       model.ArtistInfo.Id = artist.ArtistId;
       model.ArtistInfo.Max = MaxArtistIndex;
       model.ArtistInfo.Current = CurrentArtistIndex;
-     
+
       var albums = context.Albums.Where(a => a.ArtistId == model.ArtistInfo.Id).ToList();
       MaxAlbumIndex = albums.Count;
       var album = albums[CurrentAlbumIndex];
@@ -185,7 +198,7 @@ namespace Chinook.UI
     private void CancelBtn_Click(object sender, RoutedEventArgs e)
     {
       Close();
-   
+
     }
     private void PlayBtn_Click(object sender, RoutedEventArgs e)
     {
@@ -206,8 +219,8 @@ namespace Chinook.UI
       ArtistContext context = new ArtistContext();
 
 
-       var model = BuildModelFromView(context);
-     // var model = BuildModel(context);
+      var model = BuildModelFromView(context);
+       //var model = BuildModel(context);
       if (model.ArtistInfo.Name == null)
         return;
       SetModel(model);

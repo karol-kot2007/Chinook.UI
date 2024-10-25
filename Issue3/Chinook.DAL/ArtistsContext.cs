@@ -7,15 +7,12 @@ namespace Chinook.DAL
   {
     public DbSet<Track> Tracks { get; set; }
     public DbSet<Artist> Artists { get; set; }
-    public DbSet<AlbumTrack> AlbumTracks { get; set; }
     public DbSet<Album> Albums { get; set; }
-    //public DbSet<Album> artistName { get; set; }
-    //public DbSet<AlbumTracks> albumName { get; set; }
-    //public DbSet<AlbumTracks> artistId { get; set; }
-    //public DbSet<AlbumTracks> albumId { get; set; }
-    //public DbSet<AlbumTracks> trackId { get; set; }
-    //public DbSet<AlbumTracks> trackName { get; set; }
 
+
+
+
+    public DbSet<AlbumTrack> AlbumTracks { get; set; }
 
     // tabvele jak powzyej zrobvic 
     public static string chinookPath = "chinook.db";
@@ -38,6 +35,7 @@ namespace Chinook.DAL
       modelBuilder.Entity<Track>().HasKey(x => x.TrackId);
       modelBuilder.Entity<Artist>().HasKey(x => x.ArtistId);
       modelBuilder.Entity<AlbumTrack>().HasNoKey();
+      modelBuilder.Entity<AlbumTracks>().HasNoKey();  
     }
   }
 }
