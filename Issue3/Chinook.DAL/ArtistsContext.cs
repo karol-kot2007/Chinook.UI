@@ -35,7 +35,7 @@ namespace Chinook.DAL
       modelBuilder.Entity<Track>().HasKey(x => x.TrackId);
       modelBuilder.Entity<Artist>().HasKey(x => x.ArtistId);
       modelBuilder.Entity<AlbumTrack>().HasNoKey();
-      modelBuilder.Entity<AlbumTracks>().HasNoKey();  
+      modelBuilder.Entity<AlbumTracks>().HasNoKey();
     }
   }
 }
