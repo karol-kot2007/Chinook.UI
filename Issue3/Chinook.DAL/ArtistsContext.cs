@@ -12,7 +12,7 @@ namespace Chinook.DAL
 
 
 
-    public DbSet<AlbumTrack> AlbumTracks { get; set; }
+    public DbSet<AlbumTracks> AlbumTracks { get; set; }
 
     // tabvele jak powzyej zrobvic 
     public static string chinookPath = "chinook.db";
