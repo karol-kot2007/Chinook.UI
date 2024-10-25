@@ -39,18 +39,30 @@ namespace Chinook.UI
     {
       Debug.WriteLine("btn clicked Prev !!!!!!!!!!" + MaxAlbumIndex + " " + CurrentAlbumIndex);
       CurrentAlbumIndex--;
-
+      if (CurrentAlbumIndex < 0)
+      {
+        CurrentAlbumIndex++;
+      }
       SetModel();
     }
 
     public void ArtistInfoControl_onPrev(object? sender, EventArgs e)
     {
       CurrentArtistIndex--;
+      if (CurrentArtistIndex < 0)
+      {
+        CurrentArtistIndex++;
+      }
       SetModel();
     }
     public void ArtistInfoControl_OnNext(object? sender, EventArgs e)
     {
       CurrentArtistIndex++;
+      if (CurrentArtistIndex > MaxArtistIndex)
+      {
+        CurrentArtistIndex--;
+      }
+
       SetModel();
     }
     public void AlbumInfoControl_OnNext(object? sender, EventArgs e)
@@ -100,26 +112,7 @@ namespace Chinook.UI
       MaxArtistIndex = context.AlbumTracks.Count();
       var model = new AlbumInfoModel();
 
-      if (CurrentAlbumIndex > MaxAlbumIndex)
-      {
-        CurrentAlbumIndex--;
-
-        return model;
-      }
-      else if (CurrentAlbumIndex < 0)
-      {
-        CurrentAlbumIndex++;
-
-        return model;
-      }
-      else if (CurrentArtistIndex < 0)
-      {
-        CurrentArtistIndex++;
-      }
-      else if (CurrentArtistIndex > context.Artists.Count())
-      {
-        CurrentArtistIndex--;
-      }
+    
       var artist = context.AlbumTracks.First();
       model.ArtistInfo.Name = artist.artistName;//
       model.ArtistInfo.Id = artist.artistId;
@@ -149,20 +142,8 @@ namespace Chinook.UI
       //TODO changing props starting with Current... shall be only in button handlers AlbumInfoControl_OnNext... -
       //To simplify app add a class member: ArtistContext context and use it where you need to have context e.g. in AlbumInfoControl_OnNext -
 
-      if (CurrentArtistIndex < 0)
-      {
-        CurrentArtistIndex++;
-      }
-      else if (CurrentArtistIndex > context.Artists.Count())
-      {
-        CurrentArtistIndex--;
-      }
-      else if (CurrentAlbumIndex < 0)
-      {
-        CurrentAlbumIndex++;
-
-        return model;
-      }
+    
+    
       var artist = context.Artists.ElementAt(CurrentArtistIndex);  //TODO use context.Artists.ElementAt(CurrentArtistIndex) -d
       model.ArtistInfo.Name = artist.Name;//
       model.ArtistInfo.Id = artist.ArtistId;
@@ -223,8 +204,8 @@ namespace Chinook.UI
       ArtistContext context = new ArtistContext();
 
 
-      //var model = BuildModelFromView(context);
-      var model = BuildModel(context);
+      var model = BuildModelFromView(context);
+     // var model = BuildModel(context);
       if (model.ArtistInfo.Name == null)
         return;
       SetModel(model);
