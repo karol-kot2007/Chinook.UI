@@ -136,31 +136,38 @@ namespace Chinook.UI
       model.Tracks = context.Tracks.Where(i => i.AlbumId == album.albumId).ToList();
       return model;
     }
+
     private AlbumInfoModel BuildModel(ArtistContext context)
     {
       MaxArtistIndex = context.Artists.Count();
       var model = new AlbumInfoModel();
-      if (CurrentAlbumIndex == 2)
-      {
-        CurrentAlbumIndex--;
-        //  CurrentArtistIndex--;
-        return model;
-      }
-      else if (CurrentAlbumIndex < 0)
-      {
-        CurrentAlbumIndex++;
 
-        return model;
-      }
-      else if (CurrentArtistIndex < 0)
-      {
-        CurrentArtistIndex++;
-      }
-      else if (CurrentArtistIndex > 275)
-      {
-        CurrentArtistIndex--;
-      }
-      var artist = context.Artists.First();
+      //TODO changing props starting with Current... shall be only in button handlers AlbumInfoControl_OnNext...
+      //To simplify app add a class member: ArtistContext context and use it where you need to have context e.g. in AlbumInfoControl_OnNext 
+
+      //if (CurrentArtistIndex < 0)
+      //{
+      //  CurrentArtistIndex++;
+      //}
+      //else if (CurrentArtistIndex > 275)
+      //{
+      //  CurrentArtistIndex--;
+      //}
+
+      //if (CurrentAlbumIndex == 2)//TODO use context to know that limit
+      //{
+      //  CurrentAlbumIndex--;
+      //  //  CurrentArtistIndex--;
+      //  return model;
+      //}
+      //else if (CurrentAlbumIndex < 0)
+      //{
+      //  CurrentAlbumIndex++;
+
+      //  return model;
+      //}
+
+      var artist = context.Artists.First();  //TODO use context.Artists.ElementAt(CurrentArtistIndex)
       model.ArtistInfo.Name = artist.Name;//
       model.ArtistInfo.Id = artist.ArtistId;
       model.ArtistInfo.Max = MaxArtistIndex;
