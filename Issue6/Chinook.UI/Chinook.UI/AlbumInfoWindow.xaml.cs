@@ -226,8 +226,8 @@ namespace Chinook.UI
       ArtistContext context = new ArtistContext();
 
 
-      var model = BuildModelFromView(context);
-       //var model = BuildModel(context);
+      //var model = BuildModelFromView(context);
+      var model = BuildModel(context);
       if (model.ArtistInfo.Name == null)
         return;
       SetModel(model);
