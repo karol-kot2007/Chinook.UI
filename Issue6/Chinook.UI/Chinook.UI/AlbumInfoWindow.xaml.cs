@@ -135,11 +135,42 @@ namespace Chinook.UI
     private AlbumInfoModel BuildModel(ArtistContext context)
     {
       MaxArtistIndex = context.Artists.Count();
+<<<<<<< HEAD
       MaxAlbumIndex = context.Albums.Count();
       var model = new AlbumInfoModel();
       //TODO changing props starting with Current... shall be only in button handlers AlbumInfoControl_OnNext... - -d
       //To simplify app add a class member: ArtistContext context and use it where you need to have context e.g. in AlbumInfoControl_OnNext -
       var artist = context.Artists.ElementAt(CurrentArtistIndex);  //TODO use context.Artists.ElementAt(CurrentArtistIndex) -d
+=======
+      var model = new AlbumInfoModel();
+
+      //TODO changing props starting with Current... shall be only in button handlers AlbumInfoControl_OnNext...
+      //To simplify app add a class member: ArtistContext context and use it where you need to have context e.g. in AlbumInfoControl_OnNext 
+
+      //if (CurrentArtistIndex < 0)
+      //{
+      //  CurrentArtistIndex++;
+      //}
+      //else if (CurrentArtistIndex > 275)
+      //{
+      //  CurrentArtistIndex--;
+      //}
+
+      //if (CurrentAlbumIndex == 2)//TODO use context to know that limit
+      //{
+      //  CurrentAlbumIndex--;
+      //  //  CurrentArtistIndex--;
+      //  return model;
+      //}
+      //else if (CurrentAlbumIndex < 0)
+      //{
+      //  CurrentAlbumIndex++;
+
+      //  return model;
+      //}
+
+      var artist = context.Artists.First();  //TODO use context.Artists.ElementAt(CurrentArtistIndex)
+>>>>>>> 25620261fc1440291e48e52db091de44d7ac3130
       model.ArtistInfo.Name = artist.Name;//
       model.ArtistInfo.Id = artist.ArtistId;
       model.ArtistInfo.Max = MaxArtistIndex;
@@ -195,8 +226,13 @@ namespace Chinook.UI
       ArtistContext context = new ArtistContext();
 
 
+<<<<<<< HEAD
       var model = BuildModelFromView(context);
       //  var model = BuildModel(context);
+=======
+      //var model = BuildModelFromView(context);
+      var model = BuildModel(context);
+>>>>>>> 25620261fc1440291e48e52db091de44d7ac3130
       if (model.ArtistInfo.Name == null)
         return;
       SetModel(model);
