@@ -3,7 +3,7 @@ namespace Chinook.UI
 {
   public class Info
   {
-    public string Name { get; set; }
+    public string? Name { get; set; }
     public int Id { get; set; }
     public int Current { get; set; }
     public int Max { get; set; }

@@ -57,12 +57,12 @@ namespace Chinook.UI
     }
     public void ArtistInfoControl_OnNext(object? sender, EventArgs e)
     {
-      CurrentArtistIndex++;
+       CurrentArtistIndex=CurrentArtistIndex+24;
       if (CurrentArtistIndex > MaxArtistIndex)
       {
         CurrentArtistIndex--;
       }
-
+      
       SetModel();
     }
     public void AlbumInfoControl_OnNext(object? sender, EventArgs e)
@@ -72,6 +72,7 @@ namespace Chinook.UI
       {
         CurrentAlbumIndex--;
       }
+  
       SetModel();
     }
 
@@ -95,6 +96,7 @@ namespace Chinook.UI
         CloseBtn.Visibility = Visibility.Collapsed;
       }
       AlbumInfoModel = model;
+      
     }
     protected void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -116,16 +118,19 @@ namespace Chinook.UI
       var artist = context.AlbumTracks.ElementAt(CurrentArtistIndex);
       model.ArtistInfo.Name = artist.artistName;//
       model.ArtistInfo.Id = artist.artistId;
-      model.ArtistInfo.Max = context.Artists.Count();
+      model.ArtistInfo.Max = MaxArtistIndex;
       model.ArtistInfo.Current = CurrentArtistIndex;
+      model.ArtistInfo.Max = context.Artists.Count();
+    
       var tracks = context.Tracks.First();
       model.TrackInfo.Id = tracks.TrackId;
       model.TrackInfo.Name = tracks.Name;
       var albums = context.AlbumTracks.Where(a => a.artistId == model.ArtistInfo.Id).ToList();
       //MaxAlbumIndex = albums.Count;
+      MaxAlbumIndex = albums.Count;
       var album = albums[CurrentAlbumIndex];
-      model.AlbumInfo.Id = album.artistId;
-      model.AlbumInfo.Name = album.trackName;
+      model.AlbumInfo.Id = album.albumId;
+      model.AlbumInfo.Name = album.albumName;
       model.AlbumInfo.Max = MaxAlbumIndex;
       model.AlbumInfo.Current = CurrentAlbumIndex;
       model.Tracks = context.Tracks.Where(i => i.AlbumId == album.albumId).ToList();
@@ -135,53 +140,33 @@ namespace Chinook.UI
     private AlbumInfoModel BuildModel(ArtistContext context)
     {
       MaxArtistIndex = context.Artists.Count();
-<<<<<<< HEAD
+   
       MaxAlbumIndex = context.Albums.Count();
       var model = new AlbumInfoModel();
       //TODO changing props starting with Current... shall be only in button handlers AlbumInfoControl_OnNext... - -d
       //To simplify app add a class member: ArtistContext context and use it where you need to have context e.g. in AlbumInfoControl_OnNext -
       var artist = context.Artists.ElementAt(CurrentArtistIndex);  //TODO use context.Artists.ElementAt(CurrentArtistIndex) -d
-=======
-      var model = new AlbumInfoModel();
 
-      //TODO changing props starting with Current... shall be only in button handlers AlbumInfoControl_OnNext...
-      //To simplify app add a class member: ArtistContext context and use it where you need to have context e.g. in AlbumInfoControl_OnNext 
-
-      //if (CurrentArtistIndex < 0)
-      //{
-      //  CurrentArtistIndex++;
-      //}
-      //else if (CurrentArtistIndex > 275)
-      //{
-      //  CurrentArtistIndex--;
-      //}
-
-      //if (CurrentAlbumIndex == 2)//TODO use context to know that limit
-      //{
-      //  CurrentAlbumIndex--;
-      //  //  CurrentArtistIndex--;
-      //  return model;
-      //}
-      //else if (CurrentAlbumIndex < 0)
-      //{
-      //  CurrentAlbumIndex++;
-
-      //  return model;
-      //}
-
-      var artist = context.Artists.First();  //TODO use context.Artists.ElementAt(CurrentArtistIndex)
->>>>>>> 25620261fc1440291e48e52db091de44d7ac3130
+      if (model.AlbumInfo.Id == null)
+      {
+        Close();
+      }
+      //   var artist = context.Artists.First();  //TODO use context.Artists.ElementAt(CurrentArtistIndex)
       model.ArtistInfo.Name = artist.Name;//
       model.ArtistInfo.Id = artist.ArtistId;
       model.ArtistInfo.Max = MaxArtistIndex;
       model.ArtistInfo.Current = CurrentArtistIndex;
       var albums = context.Albums.Where(a => a.ArtistId == model.ArtistInfo.Id).ToList();
       MaxAlbumIndex = albums.Count;
+      model.AlbumInfo.Current = CurrentAlbumIndex;
+      
       var album = albums[CurrentAlbumIndex];
+ 
       model.AlbumInfo.Id = album.AlbumId;
+    
       model.AlbumInfo.Name = album.Title;
       model.AlbumInfo.Max = MaxAlbumIndex;
-      model.AlbumInfo.Current = CurrentAlbumIndex;
+     
       //   var album = albums[CurrentAlbumIndex];
       model.Tracks = context.Tracks.Where(i => i.AlbumId == album.AlbumId).ToList();
       return model;
@@ -224,15 +209,9 @@ namespace Chinook.UI
     private void SetModel()
     {
       ArtistContext context = new ArtistContext();
+     // var model = BuildModelFromView(context);
+     var model = BuildModel(context);
 
-
-<<<<<<< HEAD
-      var model = BuildModelFromView(context);
-      //  var model = BuildModel(context);
-=======
-      //var model = BuildModelFromView(context);
-      var model = BuildModel(context);
->>>>>>> 25620261fc1440291e48e52db091de44d7ac3130
       if (model.ArtistInfo.Name == null)
         return;
       SetModel(model);
